@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SK Computer | সুনামগঞ্জের এক নম্বর নির্ভরযোগ্য কম্পিউটার শপ ও পিসি বিল্ডার</title>
+    <meta name="description" content="SK Computer (এস.কে কম্পিউটার) - নেজা প্লাজা, সুনামগঞ্জ। ল্যাপটপ, ডেক্সটপ পিসি কাস্টমাইজেশন এবং জেনুইন আইটি এক্সেসরিজ এর নির্ভরযোগ্য প্রতিষ্ঠান।">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Orbitron:wght@600;800&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        body { font-family: 'Hind Siliguri', 'Inter', sans-serif; }
+        .neon-brand { font-family: 'Orbitron', sans-serif; }
+        .tech-gradient { background: linear-gradient(135deg, #070a13 0%, #0f172a 50%, #1e3a8a 100%); }
+        .custom-scrollbar::-webkit-scrollbar { width: 6px; }
+        .custom-scrollbar::-webkit-scrollbar-track { background: #0f172a; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: #3b82f6; border-radius: 4px; }
+        .neon-border:hover { box-shadow: 0 0 15px rgba(6, 182, 212, 0.3); }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 scroll-smooth">
+
+    <div class="bg-slate-950 text-slate-300 text-xs py-2.5 px-4 border-b border-slate-800 shadow-inner">
+        <div class="container mx-auto flex flex-col sm:flex-row justify-between items-center gap-2 font-medium">
+            <p class="text-center sm:text-left flex items-center justify-center gap-2">
+                <span class="bg-blue-600 text-white font-black px-1.5 py-0.5 rounded text-[9px] animate-pulse uppercase tracking-wider">Offer</span>
+                <span><i class="fa-solid fa-bullhorn text-cyan-400 mr-1"></i> সম্পূর্ণ পিসি বিল্ডের সাথে আকর্ষণীয় উপহার এবং নিশ্চিত হোম ডেলিভারি!</span>
+            </p>
+            <div class="flex items-center gap-4 text-xs shrink-0 font-semibold">
+                <span><i class="fa-solid fa-clock text-blue-500 mr-1"></i> শনি - বৃহস্পতিবার (১০টা - ৯টা)</span>
+                <a href="tel:01791533811" class="hover:text-blue-400 transition"><i class="fa-solid fa-phone text-emerald-500 mr-1"></i> ০১৭৯১-৫৩৩৮১১</a>
+            </div>
+        </div>
+    </div>
+
+    <header class="bg-slate-950 text-white sticky top-0 z-40 shadow-2xl border-b border-slate-800 backdrop-blur-md bg-opacity-95">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center gap-4">
+            
+            <a href="#" class="flex items-center gap-3 shrink-0 group">
+                <div class="w-12 h-12 rounded-xl bg-gradient-to-tr from-blue-600 via-cyan-400 to-emerald-500 p-0.5 flex items-center justify-center shadow-lg transform group-hover:rotate-3 transition">
+                    <div class="bg-slate-950 w-full h-full rounded-xl flex items-center justify-center font-black text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-300 tracking-tighter text-xl neon-brand">
+                        S<span class="text-white">K</span>
+                    </div>
+                </div>
+                <div>
+                    <h1 class="text-lg font-black tracking-wider text-white neon-brand group-hover:text-cyan-400 transition">SK COMPUTER</h1>
+                    <p class="text-[10px] text-emerald-400 font-bold -mt-1 tracking-widest">আপনার বিশ্বস্ত আইটি পার্টনার</p>
+                </div>
+            </a>
+
+            <div class="hidden md:flex flex-grow max-w-md relative">
+                <input type="text" id="live-search" placeholder="পণ্য বা মডেল সার্চ করুন (যেমন: Laptop, Router, PC)..." class="w-full bg-slate-900 border border-slate-800 text-slate-100 placeholder-slate-500 rounded-xl pl-4 pr-10 py-2 text-xs focus:outline-none focus:border-blue-500 transition shadow-inner" onkeyup="filterProducts()">
+                <i class="fa-solid fa-magnifying-glass absolute right-3.5 top-3 text-slate-500 text-xs"></i>
+            </div>
+
+            <div class="flex items-center gap-4">
+                <nav class="hidden lg:flex items-center gap-6 text-xs font-bold text-slate-300">
+                    <a href="#" class="text-blue-400">হোম পৃষ্ঠা</a>
+                    <a href="#build-calculator" class="hover:text-white transition">পিসি বিল্ডার</a>
+                    <a href="#storefront" class="hover:text-white transition">অনলাইন শপ</a>
+                    <a href="#services" class="hover:text-white transition">সার্ভিস সমূহ</a>
+                    <a href="#location-area" class="hover:text-white transition">শোরুম লোকেশন</a>
+                </nav>
+
+                <button onclick="toggleCartDrawer()" class="relative bg-slate-900 border border-slate-800 hover:border-blue-500 p-2.5 rounded-xl transition text-white flex items-center gap-2 focus:outline-none">
+                    <i class="fa-solid fa-basket-shopping text-cyan-400 text-sm"></i>
+                    <span class="hidden sm:inline text-xs font-bold">কার্ট</span>
+                    <span id="cart-counter" class="absolute -top-1.5 -right-1.5 bg-blue-600 text-[10px] font-black text-white w-5 h-5 rounded-full flex items-center justify-center shadow shadow-blue-500/50">0</span>
+                </button>
+
+                <button id="mobile-toggle" class="lg:hidden text-xl text-slate-300 focus:outline-none"><i class="fa-solid fa-bars-progress"></i></button>
+            </div>
+        </div>
+
+        <div id="mobile-drawer" class="hidden lg:hidden bg-slate-950 border-t border-slate-900 p-4 space-y-3 text-xs shadow-inner">
+            <div class="relative w-full mb-3">
+                <input type="text" id="live-search-mobile" placeholder="পণ্য সার্চ করুন..." class="w-full bg-slate-900 border border-slate-800 text-slate-100 placeholder-slate-500 rounded-xl pl-4 pr-10 py-2.5 text-xs focus:outline-none" onkeyup="syncAndFilterMobile()">
+                <i class="fa-solid fa-magnifying-glass absolute right-3.5 top-3.5 text-slate-500"></i>
+            </div>
+            <a href="#" class="block py-2 text-slate-300 font-bold border-b border-slate-900">হোม পৃষ্ঠা</a>
+            <a href="#build-calculator" class="block py-2 text-slate-300 font-bold border-b border-slate-900">পিসি বিল্ডার</a>
+            <a href="#storefront" class="block py-2 text-slate-300 font-bold border-b border-slate-900">অনলাইন শপ</a>
+            <a href="#services" class="block py-2 text-slate-300 font-bold border-b border-slate-900">আমাদের সেবাসমূহ</a>
+            <a href="#location-area" class="block py-2 text-slate-300 font-bold">যোগাযোগ ও মানচিত্র</a>
+        </div>
+    </header>
+
+    <section class="tech-gradient text-white py-16 md:py-24 relative overflow-hidden border-b border-slate-900">
+        <div class="absolute inset-0 bg-radial-gradient from-transparent to-black/40 opacity-80"></div>
+        <div class="container mx-auto px-4 grid lg:grid-cols-12 gap-12 items-center relative z-10">
+            
+            <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
+                <div class="inline-flex items-center gap-2 bg-white/5 border border-white/10 px-3 py-1.5 rounded-full text-xs font-semibold text-cyan-400">
+                    <span class="w-2 h-2 bg-emerald-400 rounded-full animate-ping"></span> এস.কে কম্পিউটার — নেজা প্লাজা, সুনামগঞ্জ
+                </div>
+                <h2 class="text-3xl sm:text-4xl lg:text-5xl font-black leading-tight text-white">
+                    সেরা পার্টস দিয়ে সাজিয়ে নিন আপনার <br class="hidden sm:inline">
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-cyan-400 to-emerald-400">স্বপ্নপূরণের কাস্টম পিসি</span>
+                </h2>
+                <p class="text-slate-400 text-xs sm:text-sm max-w-2xl mx-auto lg:mx-0 leading-relaxed">
+                    আমরা দিচ্ছি পাইকারি দামে ডেক্সটপ কম্পোনেন্ট, প্রফেশনাল ফ্রিল্যান্সিং ও গেমিং পিসি বিল্ড, অফিস সেটআপ, এবং অফিশিয়াল ওয়ারেন্টিযুক্ত জেনুইন ল্যাপটপ। নির্ভরযোগ্য ও নিখুঁত কাস্টমার সাপোর্টের নাম সুনামগঞ্জের **SK Computer**।
+                </p>
+                <div class="flex flex-wrap justify-center lg:justify-start gap-4 pt-2">
+                    <a href="#build-calculator" class="bg-gradient-to-r from-blue-600 to-cyan-500 hover:shadow-blue-500/20 text-white font-bold text-xs px-6 py-3.5 rounded-xl shadow-lg transition flex items-center gap-2">
+                        <i class="fa-solid fa-sliders"></i> নিজে পিসি তৈরি করুন
+                    </a>
+                    <a href="https://wa.me/8801791533811" target="_blank" class="bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs px-6 py-3.5 rounded-xl shadow-lg transition flex items-center gap-2">
+                        <i class="fa-brands fa-whatsapp text-sm"></i> হোয়াটসঅ্যাপ মেসেজ
+                    </a>
+                </div>
+            </div>
+
+            <div class="lg:col-span-5 relative flex justify-center">
+                <div class="w-full max-w-sm bg-white/5 backdrop-blur-md p-5 rounded-3xl border border-white/10 shadow-2xl relative">
+                    <div class="absolute -top-3.5 -left-3.5 bg-cyan-500 text-slate-950 font-black px-3 py-1 rounded-lg text-[10px] uppercase shadow-md neon-brand">Premium Retailer</div>
+                    <img src="https://images.unsplash.com/photo-1591488320449-011701bb6704?auto=format&fit=crop&w=450&q=80" alt="SK Computer Sunamganj Component Builds Inventory Showcase" class="rounded-2xl object-cover w-full h-60 sm:h-68 shadow-lg opacity-90 border border-white/5">
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section id="build-calculator" class="py-16 container mx-auto px-4 max-w-4xl">
+        <div class="bg-white rounded-3xl border border-slate-200 shadow-xl overflow-hidden">
+            <div class="bg-gradient-to-r from-slate-950 via-slate-900 to-slate-950 p-6 text-white text-center sm:text-left flex flex-col sm:flex-row justify-between items-center gap-4 border-b border-slate-800">
+                <div>
+                    <h3 class="text-xl font-bold flex items-center justify-center sm:justify-start gap-2"><i class="fa-solid fa-calculator text-cyan-400"></i> বাজেট পিসি এস্টিমেটর (PC Budget Builder)</h3>
+                    <p class="text-xs text-slate-400 mt-1">আপনার প্রয়োজনীয় পার্টস সিলেক্ট করে একটি আনুমানিক বাজেট হিসাব করুন এবং শপে পাঠান।</p>
+                </div>
+                <div class="bg-white/5 px-5 py-2.5 rounded-xl border border-white/10 shrink-0 min-w-[140px]">
+                    <span class="text-[10px] text-slate-400 block text-center uppercase tracking-wider font-bold">সর্বমোট আনুমানিক দাম</span>
+                    <span id="total-price-tag" class="text-xl font-black text-cyan-300 block text-center neon-brand">0 ৳</span>
+                </div>
+            </div>
+
+            <div class="p-6 space-y-4">
+                <div class="grid sm:grid-cols-12 gap-3 items-center border-b border-slate-100 pb-3">
+                    <label class="sm:col-span-3 text-xs font-bold text-slate-700 flex items-center gap-2">
+                        <i class="fa-solid fa-microchip text-blue-500 w-5 text-sm"></i> প্রসেসর (Processor)
+                    </label>
+                    <select id="part-processor" class="sm:col-span-9 bg-slate-50 border border-slate-200 rounded-xl p-2.5 text-xs focus:ring-2 focus:ring-blue-500 focus:outline-none transition font-medium" onchange="calculateEstimate()">
+                        <option value="0">--- সিলেক্ট করুন ---</option>
+                        <option value="9500">Intel Core i3 (10th Gen) / AMD Ryzen 3 [+9,500 ৳]</option>
+                        <option value="13800">Intel Core i5 (11th Gen) / AMD Ryzen 5 [+13,800 ৳]</option>
+                        <option value="22500">Intel Core i7 (12th Gen) High-Performance [+22,500 ৳]</option>
+                    </select>
+                </div>
+
+                <div class="grid sm:grid-cols-12 gap-3 items-center border-b border-slate-100 pb-3">
+                    <label class="sm:col-span-3 text-xs font-bold text-slate-700 flex items-center gap-2">
+                        <i class="fa-solid fa-circuit-board text-indigo-500 w-5 text-sm"></i> মাদারবোর্ড (Board)
+                    </label>
+                    <select id="part-board" class="sm:col-span-9 bg-slate-50 border border-slate-200 rounded-xl p-2.5 text-xs focus:ring-2 focus:ring-blue-500 focus:outline-none transition font-medium" onchange="calculateEstimate()">
+                        <option value="0">--- সিলেক্ট করুন ---</option>
+                        <option value="7200">Value Series H410 / H510 Durable Board [+7,200 ৳]</option>
+                        <option value="11500">Gigabyte / ASUS Mid Range Premium Board [+11,500 ৳]</option>
+                    </select>
+                </div>
+
+                <div class="grid sm:grid-cols-12 gap-3 items-center border-b border-slate-100 pb-3">
+                    <label class="sm:col-span-3 text-xs font-bold text-slate-700 flex items-center gap-2">
+                        <i class="fa-solid fa-memory text-purple-500 w-5 text-sm"></i> র্যাম (RAM Memory)
+                    </label>
+                    <select id="part-ram" class="sm:col-span-9 bg-slate-50 border border-slate-200 rounded-xl p-2.5 text-xs focus:ring-2 focus:ring-blue-500 focus:outline-none transition font-medium" onchange="calculateEstimate()">
+                        <option value="0">--- সিলেক্ট করুন ---</option>
+                        <option value="2400">8GB DDR4 High Speed Desktop RAM [+2,400 ৳]</option>
+                        <option value="4600">16GB DDR4 Gaming Overclocked RAM Kit [+4,600 ৳]</option>
+                    </select>
+                </div>
+
+                <div class="grid sm:grid-cols-12 gap-3 items-center border-b border-slate-100 pb-3">
+                    <label class="sm:col-span-3 text-xs font-bold text-slate-700 flex items-center gap-2">
+                        <i class="fa-solid fa-hard-drive text-amber-500 w-5 text-sm"></i> স্টোরেজ (SSD Storage)
+                    </label>
+                    <select id="part-storage" class="sm:col-span-9 bg-slate-50 border border-slate-200 rounded-xl p-2.5 text-xs focus:ring-2 focus:ring-blue-500 focus:outline-none transition font-medium" onchange="calculateEstimate()">
+                        <option value="0">--- সিলেক্ট করুন ---</option>
+                        <option value="2100">128GB High Speed SATA SSD Drive [+2,100 ৳]</option>
+                        <option value="3200">256GB NVMe M.2 Ultra Fast SSD Drive [+3,200 ৳]</option>
+                        <option value="5500">512GB NVMe M.2 Premium SSD Drive [+5,500 ৳]</option>
+                    </select>
+                </div>
+
+                <div class="grid sm:grid-cols-12 gap-3 items-center border-b border-slate-100 pb-3">
+                    <label class="sm:col-span-3 text-xs font-bold text-slate-700 flex items-center gap-2">
+                        <i class="fa-solid fa-box text-cyan-500 w-5 text-sm"></i> কেসিং ও পাওয়ার সাপ্লাই
+                    </label>
+                    <select id="part-casing" class="sm:col-span-9 bg-slate-50 border border-slate-200 rounded-xl p-2.5 text-xs focus:ring-2 focus:ring-blue-500 focus:outline-none transition font-medium" onchange="calculateEstimate()">
+                        <option value="0">--- সিলেক্ট করুন ---</option>
+                        <option value="2800">Standard Thermal Casing with Power Unit Combo [+2,800 ৳]</option>
+                        <option value="5500">RGB Gaming Visual Casing + 450W 80+ Certified PSU [+5,500 ৳]</option>
+                    </select>
+                </div>
+
+                <div class="pt-4 flex flex-col sm:flex-row justify-between items-center gap-4 bg-slate-50 p-4 rounded-2xl border border-slate-100">
+                    <p class="text-[11px] text-slate-400 text-center sm:text-left leading-relaxed"><i class="fa-solid fa-info-circle text-blue-500 mr-1"></i> বাজার পরিস্থিতির ওপর ভিত্তি করে পার্টসের বৈশ্বিক দাম কিছুটা পরিবর্তন হতে পারে। আপনার কনফিগারেশনের সঠিক স্টক ও ইনস্ট্যান্ট বুকিং এর জন্য বাটনে ক্লিক করুন।</p>
+                    <button onclick="sendConfiguration()" class="w-full sm:w-auto bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs px-6 py-3.5 rounded-xl transition shadow flex items-center justify-center gap-2 shrink-0 focus:outline-none">
+                        <i class="fa-brands fa-whatsapp text-sm"></i> এই কনফিগারেশনটি শপে পাঠান
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="storefront" class="py-16 bg-white border-t border-b border-slate-200 shadow-inner">
+        <div class="container mx-auto px-4">
+            
+            <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-10 pb-6 border-b border-slate-100">
+                <div>
+                    <h3 class="text-xl sm:text-2xl font-black text-slate-900 tracking-tight">রানিং স্টক ক্যাটালগ ও লাইভ অর্ডার</h3>
+                    <p class="text-xs text-slate-500 mt-1">পছন্দের পণ্যটি নির্বাচন করে কার্টে যুক্ত করুন এবং সরাসরি দোকানের হোয়াটসঅ্যাপ নম্বরে চূড়ান্ত অর্ডার সাবমিট করুন।</p>
+                </div>
+                
+                <div class="flex flex-wrap gap-2 w-full md:w-auto overflow-x-auto py-1 font-bold">
+                    <button onclick="filterCategory('all')" class="cat-tab-btn active-tab bg-blue-600 text-white text-xs px-4 py-2 rounded-xl transition shadow focus:outline-none">All Items</button>
+                    <button onclick="filterCategory('pc')" class="cat-tab-btn bg-slate-50 border border-slate-200 text-slate-600 text-xs px-4 py-2 rounded-xl transition hover:bg-slate-100 focus:outline-none">Desktops</button>
+                    <button onclick="filterCategory('laptop')" class="cat-tab-btn bg-slate-50 border border-slate-200 text-slate-600 text-xs px-4 py-2 rounded-xl transition hover:bg-slate-100 focus:outline-none">Laptops</button>
+                    <button onclick="filterCategory('parts')" class="cat-tab-btn bg-slate-50 border border-slate-200 text-slate-600 text-xs px-4 py-2 rounded-xl transition hover:bg-slate-100 focus:outline-none">Accessories</button>
+                </div>
+            </div>
+
+            <div id="product-grid" class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                
+                <div class="product-card bg-white border border-slate-200 rounded-2xl overflow-hidden p-4 flex flex-col justify-between hover:shadow-lg neon-border transition" data-category="pc" data-title="intel budget custom build desktop pc core i3">
+                    <div>
+                        <div class="bg-slate-50 rounded-xl h-40 flex items-center justify-center overflow-hidden mb-3 p-4 relative border border-slate-100">
+                            <img src="https://images.unsplash.com/photo-1587202372775-e229f172b9d7?auto=format&fit=crop&w=260&q=80" alt="Core i3 Premium Custom PC Build Store Item Portfolio" class="h-full object-contain">
+                            <span class="absolute top-2 left-2 bg-slate-900 text-[10px] text-white font-bold px-2 py-0.5 rounded">পপুলার বিল্ড</span>
+                        </div>
+                        <span class="text-[10px] text-blue-600 font-extrabold uppercase tracking-wider">Custom Desktop</span>
+                        <h4 class="font-bold text-slate-900 text-sm mt-0.5 leading-tight product-title-txt">Intel Core i3 ফ্রিল্যান্সিং ও অফিস রেডি ডেক্সটপ পিসি</h4>
+                        <p class="text-[11px] text-slate-400 mt-1.5"><i class="fa-solid fa-circle-nodes text-blue-500 mr-1"></i> 8GB RAM | 256GB High-Speed NVMe SSD</p>
+                    </div>
+                    <div class="mt-5 pt-3 border-t border-slate-100 flex items-center justify-between gap-2">
+                        <div>
+                            <span class="text-[10px] text-slate-400 block -mb-0.5">অফার প্রাইস</span>
+                            <span class="text-sm font-black text-slate-900 font-bold">১৬,৫০০ ৳</span>
+                        </div>
+                        <button onclick="addToCart(1, 'Intel Core i3 অফিস ডেক্সটপ পিসি', 16500)" class="bg-slate-950 hover:bg-blue-600 text-white p-2.5 rounded-xl transition focus:outline-none flex items-center justify-center gap-1 text-xs font-bold shrink-0">
+                            <i class="fa-solid fa-cart-plus text-sm"></i> কার্ট এ রাখুন
+                        </button>
+                    </div>
+                </div>
+
+                <div class="product-card bg-white border border-slate-200 rounded-2xl overflow-hidden p-4 flex flex-col justify-between hover:shadow-lg neon-border transition" data-category="laptop" data-title="hp official premium slim laptop student budget">
+                    <div>
+                        <div class="bg-slate-50 rounded-xl h-40 flex items-center justify-center overflow-hidden mb-3 p-4 relative border border-slate-100">
+                            <img src="https://images.unsplash.com/photo-1593642632823-8f785ba67e45?auto=format&fit=crop&w=260&q=80" alt="Official Branded High Performance Laptop Item Profile Showcase" class="h-full object-contain">
+                            <span class="absolute top-2 left-2 bg-blue-600 text-[10px] text-white font-bold px-2 py-0.5 rounded">অফিসিয়াল ওয়ারেন্টি</span>
+                        </div>
+                        <span class="text-[10px] text-purple-600 font-extrabold uppercase tracking-wider">Laptops</span>
+                        <h4 class="font-bold text-slate-900 text-sm mt-0.5 leading-tight product-title-txt">HP Slim অরিজিনাল স্টুডেন্ট ও প্রফেশনাল ল্যাপটপ</h4>
+                        <p class="text-[11px] text-slate-400 mt-1.5"><i class="fa-solid fa-circle-nodes text-purple-500 mr-1"></i> Core i5 Premium High Performance Setup</p>
+                    </div>
+                    <div class="mt-5 pt-3 border-t border-slate-100 flex items-center justify-between gap-2">
+                        <div>
+                            <span class="text-[10px] text-slate-400 block -mb-0.5">নিশ্চিত ওয়ারেন্টিসহ</span>
+                            <span class="text-sm font-black text-slate-900 font-bold">৫৪,০০০ ৳</span>
+                        </div>
+                        <button onclick="addToCart(2, 'HP Slim অরিজিনাল ল্যাপটপ i5', 54000)" class="bg-slate-950 hover:bg-blue-600 text-white p-2.5 rounded-xl transition focus:outline-none flex items-center justify-center gap-1 text-xs font-bold shrink-0">
+                            <i class="fa-solid fa-cart-plus text-sm"></i> কার্ট এ রাখুন
+                        </button>
+                    </div>
+                </div>
+
+                <div class="product-card bg-white border border-slate-200 rounded-2xl overflow-hidden p-4 flex flex-col justify-between hover:shadow-lg neon-border transition" data-category="parts" data-title="tp-link tl-wr840n high speed wireless network router">
+                    <div>
+                        <div class="bg-slate-50 rounded-xl h-40 flex items-center justify-center overflow-hidden mb-3 p-4 relative border border-slate-100">
+                            <img src="https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?auto=format&fit=crop&w=260&q=80" alt="TP-Link High-Speed Smart Router Asset Catalog" class="h-full object-contain">
+                            <span class="absolute top-2 left-2 bg-emerald-600 text-[10px] text-white font-bold px-2 py-0.5 rounded">3 Yrs Warranty</span>
+                        </div>
+                        <span class="text-[10px] text-emerald-600 font-extrabold uppercase tracking-wider">Networking</span>
+                        <h4 class="font-bold text-slate-900 text-sm mt-0.5 leading-tight product-title-txt">TP-Link TL-WR840N হাই-স্পিড ৩00Mbps হোম রাউটার</h4>
+                        <p class="text-[11px] text-slate-400 mt-1.5"><i class="fa-solid fa-circle-nodes text-emerald-500 mr-1"></i> শক্তিশালী সিগন্যাল কভারেজ ডিভাইস</p>
+                    </div>
+                    <div class="mt-5 pt-3 border-t border-slate-100 flex items-center justify-between gap-2">
+                        <div>
+                            <span class="text-[10px] text-slate-400 block -mb-0.5">বেস্ট হোলসেল রেট</span>
+                            <span class="text-sm font-black text-slate-900 font-bold">১,৪৫০ ৳</span>
+                        </div>
+                        <button onclick="addToCart(3, 'TP-Link TL-WR840N হোম রাউটার', 1450)" class="bg-slate-950 hover:bg-blue-600 text-white p-2.5 rounded-xl transition focus:outline-none flex items-center justify-center gap-1 text-xs font-bold shrink-0">
+                            <i class="fa-solid fa-cart-plus text-sm"></i> কার্ট এ রাখুন
+                        </button>
+                    </div>
+                </div>
+
+                <div class="product-card bg-white border border-slate-200 rounded-2xl overflow-hidden p-4 flex flex-col justify-between hover:shadow-lg neon-border transition" data-category="parts" data-title="gaming keybaord combo mouse set black rgb mechanical">
+                    <div>
+                        <div class="bg-slate-50 rounded-xl h-40 flex items-center justify-center overflow-hidden mb-3 p-4 relative border border-slate-100">
+                            <img src="https://images.unsplash.com/photo-1618384887929-16ec33fab9ef?auto=format&fit=crop&w=260&q=80" alt="Premium Backlit RGB Gaming Keyboard Set Profile Portfolio" class="h-full object-contain">
+                            <span class="absolute top-2 left-2 bg-amber-500 text-[10px] text-slate-950 font-black px-2 py-0.5 rounded">NEW STOCK</span>
+                        </div>
+                        <span class="text-[10px] text-amber-600 font-extrabold uppercase tracking-wider">Accessories</span>
+                        <h4 class="font-bold text-slate-900 text-sm mt-0.5 leading-tight product-title-txt">RGB ব্যাকলিট আল্ট্রা-ডিউরেবল কীবোর্ড ও মাউস কম্বো সেট</h4>
+                        <p class="text-[11px] text-slate-400 mt-1.5"><i class="fa-solid fa-circle-nodes text-amber-500 mr-1"></i> গেমিং ও কমফোর্ট টাইপিং ডিজাইন সেটআপ</p>
+                    </div>
+                    <div class="mt-5 pt-3 border-t border-slate-100 flex items-center justify-between gap-2">
+                        <div>
+                            <span class="text-[10px] text-slate-400 block -mb-0.5">স্টক সীমিত</span>
+                            <span class="text-sm font-black text-slate-900 font-bold">১,汇报 ৳</span>
+                        </div>
+                        <button onclick="addToCart(4, 'RGB কীবোর্ড ও মাউস কম্বো সেট', 1200)" class="bg-slate-950 hover:bg-blue-600 text-white p-2.5 rounded-xl transition focus:outline-none flex items-center justify-center gap-1 text-xs font-bold shrink-0">
+                            <i class="fa-solid fa-cart-plus text-sm"></i> কার্ট এ রাখুন
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="services" class="bg-slate-950 text-slate-100 py-16 border-t border-b border-slate-900 shadow-2xl">
+        <div class="container mx-auto px-4">
+            <div class="text-center max-w-xl mx-auto mb-12">
+                <h3 class="text-2xl font-black text-white mb-2 tracking-tight">আমাদের প্রফেশনাল আইটি সেবাসমূহ</h3>
+                <div class="w-12 h-1 bg-blue-500 mx-auto rounded"></div>
+                <p class="text-xs text-slate-400 mt-2">SK Computer থেকে যেকোনো ডিভাইস বা কম্পিউটার কিনে আপনি পাবেন দীর্ঘস্থায়ী ও নিশ্চিত সাপোর্ট।</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-6 text-xs sm:text-sm">
+                <div class="bg-slate-900 border border-slate-800 p-6 rounded-2xl space-y-3 shadow-inner">
+                    <div class="w-11 h-11 rounded-xl bg-blue-500/10 flex items-center justify-center text-blue-400 text-lg"><i class="fa-solid fa-screwdriver-wrench"></i></div>
+                    <h4 class="text-base font-bold text-white">দ্রুত পিসি ও ল্যাপটপ সার্ভিসিং</h4>
+                    <p class="text-slate-400 leading-relaxed text-[11px] sm:text-xs">উইন্ডোজ ক্র্যাশ, স্লো পারফরম্যান্স দূর করতে এসএসডি আপগ্রেডেশন, মাদারবোর্ড মেরামত এবং প্রফেশনাল থার্মাল পেস্ট ক্লিনিং ডায়াগনস্টিকস অত্যন্ত যত্নসহকারে করা হয়।</p>
+                </div>
+                <div class="bg-slate-900 border border-slate-800 p-6 rounded-2xl space-y-3 shadow-inner">
+                    <div class="w-11 h-11 rounded-xl bg-emerald-500/10 flex items-center justify-center text-emerald-400 text-lg"><i class="fa-solid fa-truck-fast"></i></div>
+                    <h4 class="text-base font-bold text-white">সুনামগঞ্জ জেলা জুড়ে হোম ডেলিভারি</h4>
+                    <p class="text-slate-400 leading-relaxed text-[11px] sm:text-xs">আপনার অর্ডারকৃত যেকোনো কম্পিউটার এক্সেসরিজ বা সম্পূর্ণ কাস্টম পিসি বিল্ড সেটআপ আমরা সুনামগঞ্জ সদর সহ পার্শ্ববর্তী সকল এলাকায় নিজস্ব ডেলিভারি টিম দিয়ে সেফ হোম ডেলিভারি দিই।</p>
+                </div>
+                <div class="bg-slate-900 border border-slate-800 p-6 rounded-2xl space-y-3 shadow-inner">
+                    <div class="w-11 h-11 rounded-xl bg-cyan-500/10 flex items-center justify-center text-cyan-400 text-lg"><i class="fa-solid fa-user-shield"></i></div>
+                    <h4 class="text-base font-bold text-white">১০০% জেনুইন পার্টস গ্যারান্টি</h4>
+                    <p class="text-slate-400 leading-relaxed text-[11px] sm:text-xs">নকল বা রিফারবিশড পণ্য থেকে সাবধান! আমরা প্রতিটি আইটি পণ্যের সাথে প্রস্তুতকারক ব্র্যান্ডের আসল অফিশিয়াল ওয়ারেন্টি পার্টস রিপ্লেসমেন্ট সুবিধা ও ক্যাশ মেমো প্রদান করি।</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-16 bg-slate-100/60 border-b border-slate-200">
+        <div class="container mx-auto px-4 max-w-3xl">
+            <h3 class="text-xl font-black text-slate-950 text-center mb-6 tracking-tight">সাধারণ জিজ্ঞাসিত প্রশ্নাবলী (FAQ)</h3>
+            <div class="space-y-3 font-medium">
+                <details class="bg-white p-4 rounded-xl border border-slate-200 group focus:outline-none shadow-sm">
+                    <summary class="text-xs sm:text-sm font-bold text-slate-800 list-none flex justify-between items-center cursor-pointer select-none">
+                        ১. আপনারা কি পিসি কম্পোনেন্ট বা পার্টস আলাদা পাইকারি রেটে বিক্রি করেন? <i class="fa-solid fa-chevron-down text-xs text-slate-400 group-open:rotate-180 transition"></i>
+                    </summary>
+                    <p class="text-xs text-slate-500 mt-2.5 leading-relaxed border-t border-slate-50 pt-2 font-normal">জি, আমরা সুনামগঞ্জে অত্যন্ত সাশ্রয়ী ও পাইকারি মূল্যে প্রতিটি মাদারবোর্ড, প্রসেসর, র‍্যাম এবং স্টোরেজ ড্রাইভ এককভাবে বিক্রি করে থাকি।</p>
+                </details>
+                <details class="bg-white p-4 rounded-xl border border-slate-200 group focus:outline-none shadow-sm">
+                    <summary class="text-xs sm:text-sm font-bold text-slate-800 list-none flex justify-between items-center cursor-pointer select-none">
+                        ২. ঢাকার বাইরে বা ঢাকার পণ্যের মূল্যের সাথে আপনাদের এখানে কেমন তারতম্য হবে? <i class="fa-solid fa-chevron-down text-xs text-slate-400 group-open:rotate-180 transition"></i>
+                    </summary>
+                    <p class="text-xs text-slate-500 mt-2.5 leading-relaxed border-t border-slate-50 pt-2 font-normal">আমরা চেষ্টা করি ঢাকা ও আন্তর্জাতিক বাজারের সাথে সামঞ্জস্য রেখে সবচেয়ে কম লাভে গ্রাহকদের হাতে শতভাগ আসল পণ্য তুলে দিতে।</p>
+                </details>
+            </div>
+        </div>
+    </section>
+
+    <section id="location-area" class="py-16 container mx-auto px-4 grid md:grid-cols-2 gap-8 items-start">
+        <div class="bg-white p-6 rounded-3xl border border-slate-200 shadow-lg space-y-5">
+            <h3 class="text-lg sm:text-xl font-extrabold text-slate-900 tracking-tight">সরাসরি চলে আসুন আমাদের শোরুমে</h3>
+            <div class="w-10 h-0.5 bg-blue-600 rounded"></div>
+            <p class="text-xs text-slate-500 leading-relaxed">সুনামগঞ্জ স্টেশন রোডের নেজা প্লাজার আন্ডারগ্রাউন্ড ফ্লোরে আমাদের মূল আউটলেট। যেকোনো আইটি পণ্য সশরীরে যাচাই করে সবচেয়ে সেরা মূল্যে কিনতে আজই আমাদের শপ ভিজিট করুন।</p>
+            
+            <div class="space-y-4 text-xs">
+                <div class="flex items-start gap-3">
+                    <i class="fa-solid fa-map-pin text-red-500 text-sm mt-0.5"></i>
+                    <div>
+                        <strong class="block text-slate-950 font-bold mb-0.5">শোরুমের ঠিকানা:</strong>
+                        <span class="text-slate-600 font-medium">নেজা প্লাজা (আন্ডারগ্রাউন্ড ফ্লোর), স্টেশন রোড, সুনামগঞ্জ, বাংলাদেশ।</span>
+                    </div>
+                </div>
+                <div class="flex items-start gap-3">
+                    <i class="fa-solid fa-phone text-blue-600 text-sm mt-0.5"></i>
+                    <div>
+                        <strong class="block text-slate-950 font-bold mb-0.5">সরাসরি হটলাইন নাম্বার সমূহ:</strong>
+                        <span class="text-slate-600 font-medium font-bold">০১৭৯১-৫৩৩৮১১, ০১৭১০-১৮৫০৭৭</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="pt-4 border-t border-slate-100 flex gap-3 text-xs font-bold">
+                <a href="tel:01791533811" class="flex-1 bg-blue-600 hover:bg-blue-700 text-white text-center py-3.5 rounded-xl transition shadow"><i class="fa-solid fa-phone mr-1"></i> সিম ১ কল করুন</a>
+                <a href="tel:01710185077" class="flex-1 bg-slate-900 hover:bg-slate-800 text-white text-center py-3.5 rounded-xl transition shadow"><i class="fa-solid fa-mobile mr-1"></i>  সিম ২ কল করুন</a>
+            </div>
+        </div>
+
+        <div class="bg-slate-900 border border-slate-800 p-6 rounded-3xl h-72 flex flex-col justify-center items-center text-center shadow-2xl">
+            <i class="fa-solid fa-store text-cyan-400 text-4xl mb-3 shadow"></i>
+            <h4 class="font-extrabold text-white text-base neon-brand">SK Computer Outlet Map</h4>
+            <p class="text-xs text-slate-400 mt-1 max-w-xs">নেজা প্লাজা, স্টেশন রোড (আন্ডারগ্রাউন্ড ফ্লোর), সুনামগঞ্জ</p>
+            <div class="mt-5 text-[10px] bg-slate-950 border border-slate-800 text-slate-400 px-4 py-1.5 rounded-full font-bold"><i class="fa-solid fa-circle text-emerald-400 text-[8px] mr-1.5 animate-pulse"></i> শপ খোলা আছে</div>
+        </div>
+    </section>
+
+    <div class="fixed bottom-4 left-4 z-40 max-w-xs bg-slate-950 border border-slate-800 p-3.5 rounded-2xl shadow-2xl hidden md:flex items-center gap-3 animate-fade-in">
+        <div class="w-8 h-8 rounded-full bg-blue-600 text-white font-bold flex items-center justify-center text-xs shrink-0 font-bold">SK</div>
+        <div class="text-[11px]">
+            <p class="text-white font-bold">জরুরী প্রাইজ কোটেশন?</p>
+            <a href="https://wa.me/8801791533811" target="_blank" class="text-emerald-400 hover:underline font-bold">হোয়াটসঅ্যাপ চ্যাট শুরু করুন →</a>
+        </div>
+    </div>
+
+    <footer class="bg-slate-950 py-8 border-t border-slate-900 text-center text-xs text-slate-500">
+        <p class="font-bold text-slate-400 tracking-wider uppercase neon-brand">SK Computer - এস.কে কম্পিউটার</p>
+        <p class="mt-1 text-[11px] text-slate-600">© 2026 All Rights Reserved. Fully operational high-feature hybrid enterprise architecture framework.</p>
+    </footer>
+
+    <div id="cart-drawer" class="fixed top-0 right-0 z-50 h-full w-full max-w-sm bg-slate-950 text-white shadow-2xl border-l border-slate-800 transform translate-x-full transition-transform duration-300 flex flex-col justify-between">
+        
+        <div class="bg-slate-900 p-4 border-b border-slate-800 flex justify-between items-center">
+            <h4 class="font-bold text-xs flex items-center gap-2 uppercase tracking-wider"><i class="fa-solid fa-basket-shopping text-blue-500 text-sm"></i> আপনার শপিং কার্ট</h4>
+            <button onclick="toggleCartDrawer()" class="text-slate-400 hover:text-white font-black text-sm focus:outline-none bg-slate-950 w-8 h-8 rounded-lg border border-slate-800 flex items-center justify-center">×</button>
+        </div>
+
+        <div id="cart-items-container" class="p-4 flex-grow overflow-y-auto space-y-3 custom-scrollbar text-xs">
+            <p id="empty-cart-msg" class="text-slate-500 text-center py-12 font-medium">আপনার শপিং কার্টটি বর্তমানে একদম খালি আছে!</p>
+        </div>
+
+        <div class="p-4 bg-slate-900 border-t border-slate-800 space-y-4">
+            <div class="flex justify-between items-center font-bold text-xs sm:text-sm">
+                <span class="text-slate-400">সর্বমোট প্রদেয় বিল:</span>
+                <span id="cart-total-price-tag" class="text-cyan-400 text-sm font-black text-base neon-brand">0 ৳</span>
+            </div>
+            <button onclick="submitCartToWhatsApp()" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white text-center font-bold py-3.5 rounded-xl text-xs transition flex items-center justify-center gap-2 shadow-lg focus:outline-none">
+                <i class="fa-brands fa-whatsapp text-base"></i> অর্ডারটি হোয়াটসঅ্যাপে পাঠান
+            </button>
+        </div>
+    </div>
+
+    <script>
+        // Toggle responsive drawer menu systems mapping references
+        const mobileToggle = document.getElementById('mobile-toggle');
+        const mobileDrawer = document.getElementById('mobile-drawer');
+        const cartDrawer = document.getElementById('cart-drawer');
+
+        mobileToggle.addEventListener('click', () => { mobileDrawer.classList.toggle('hidden'); });
+
+        function toggleCartDrawer() {
+            cartDrawer.classList.toggle('translate-x-full');
+        }
+
+        // Live Operational State Storage Array Component Engine
+        let currentCart = [];
+
+        function addToCart(id, title, price) {
+            const existingItem = currentCart.find(item => item.id === id);
+            if (existingItem) {
+                existingItem.qty += 1;
+            } else {
+                currentCart.push({ id, title, price, qty: 1 });
+            }
+            renderCartUI();
+            
+            // Auto open visual cart slider notification 
+            cartDrawer.classList.remove('translate-x-full');
+        }
+
+        function removeCartItem(id) {
+            currentCart = currentCart.filter(item => item.id !== id);
+            renderCartUI();
+        }
+
+        function renderCartUI() {
+            const container = document.getElementById('cart-items-container');
+            const counter = document.getElementById('cart-counter');
+            const totalTag = document.getElementById('cart-total-price-tag');
+            const emptyMsg = document.getElementById('empty-cart-msg');
+
+            container.innerHTML = '';
+            
+            if (currentCart.length === 0) {
+                container.appendChild(emptyMsg);
+                counter.innerText = '0';
+                totalTag.innerText = '0 ৳';
+                return;
+            }
+
+            let computedTotalSum = 0;
+            let totalQtyCount = 0;
+
+            currentCart.forEach(item => {
+                computedTotalSum += (item.price * item.qty);
+                totalQtyCount += item.qty;
+
+                const itemRow = document.createElement('div');
+                itemRow.className = 'bg-slate-900 p-3 rounded-xl border border-slate-800 flex justify-between items-center gap-2';
+                itemRow.innerHTML = `
+                    <div class="space-y-0.5">
+                        <p class="font-bold text-white leading-tight">${item.title}</p>
+                        <p class="text-[10px] text-slate-500 font-bold">${item.price.toLocaleString('bn-BD')} ৳ × ${item.qty}</p>
+                    </div>
+                    <button onclick="removeCartItem(${item.id})" class="text-slate-500 hover:text-red-400 transition p-2 text-sm focus:outline-none"><i class="fa-solid fa-trash-can"></i></button>
+                `;
+                container.appendChild(itemRow);
+            });
+
+            counter.innerText = totalQtyCount;
+            totalTag.innerText = computedTotalSum.toLocaleString('bn-BD') + " ৳";
+        }
+
+        // Calculator Formula Rules Engine Pricing Module Logic
+        function calculateEstimate() {
+            const proc = parseInt(document.getElementById('part-processor').value) || 0;
+            const board = parseInt(document.getElementById('part-board').value) || 0;
+            const ram = parseInt(document.getElementById('part-ram').value) || 0;
+            const storage = parseInt(document.getElementById('part-storage').value) || 0;
+            const casing = parseInt(document.getElementById('part-casing').value) || 0;
+
+            const total = proc + board + ram + storage + casing;
+            document.getElementById('total-price-tag').innerText = total.toLocaleString('bn-BD') + " ৳";
+        }
+
+        // Calculator Text Data WhatsApp Pack Submission Mapping
+        function sendConfiguration() {
+            const procText = document.getElementById('part-processor').options[document.getElementById('part-processor').selectedIndex].text;
+            const boardText = document.getElementById('part-board').options[document.getElementById('part-board').selectedIndex].text;
+            const ramText = document.getElementById('part-ram').options[document.getElementById('part-ram').selectedIndex].text;
+            const storageText = document.getElementById('part-storage').options[document.getElementById('part-storage').selectedIndex].text;
+            const casingText = document.getElementById('part-casing').options[document.getElementById('part-casing').selectedIndex].text;
+            const totalText = document.getElementById('total-price-tag').innerText;
+
+            if(totalText === "0 ৳") {
+                alert('অনুগ্রহ করে পিসি বিল্ড করার জন্য প্রথমে কম্পোনেন্ট সিলেক্ট করুন!');
+                return;
+            }
+
+            const message = `আসসালামু আলাইকুম SK Computer, আমি একটি কাস্টম পিসি কনফিগারেশন তৈরি করেছি:\n\n- প্রসেসর: ${procText}\n- মাদারবোর্ড: ${boardText}\n- র‍্যাম: ${ramText}\n- স্টোরেজ: ${storageText}\n- কেসিং ও পাওয়ার সাপ্লাই: ${casingText}\n\nআনুমানিক সর্বমোট মূল্য: ${totalText}\n\nঅনুগ্রহ করে পণ্যগুলোর স্টক ও চূড়ান্ত প্রাইজ কনফার্ম করুন।`;
+            window.open(`https://wa.me/8801791533811?text=${encodeURIComponent(message)}`, '_blank');
+        }
+
+        // Real-Time Live Text Filtering Parsing Module Functionality Hook
+        function filterProducts() {
+            const query = document.getElementById('live-search').value.toLowerCase();
+            executeFiltering(query);
+        }
+
+        function syncAndFilterMobile() {
+            const query = document.getElementById('live-search-mobile').value.toLowerCase();
+            executeFiltering(query);
+        }
+
+        function executeFiltering(query) {
+            const cards = document.querySelectorAll('.product-card');
+            cards.forEach(card => {
+                const titleText = card.getAttribute('data-title') || '';
+                if (titleText.includes(query)) {
+                    card.classList.remove('hidden');
+                } else {
+                    card.classList.add('hidden');
+                }
+            });
+        }
+
+        // Category Tab Switches Controller System Architecture Matrix Layout Display Elements
+        function filterCategory(catName) {
+            const tabs = document.querySelectorAll('.cat-tab-btn');
+            tabs.forEach(tab => {
+                tab.classList.remove('bg-blue-600', 'text-white', 'active-tab');
+                tab.classList.add('bg-slate-50', 'text-slate-600', 'border', 'border-slate-200', 'hover:bg-slate-100');
+            });
+
+            const activeBtn = event.currentTarget;
+            activeBtn.classList.remove('bg-slate-50', 'text-slate-600', 'border', 'border-slate-200', 'hover:bg-slate-100');
+            activeBtn.classList.add('bg-blue-600', 'text-white', 'active-tab');
+
+            const cards = document.querySelectorAll('.product-card');
+            cards.forEach(card => {
+                const itemCat = card.getAttribute('data-category');
+                if (catName === 'all' || itemCat === catName) {
+                    card.classList.remove('hidden');
+                } else {
+                    card.classList.add('hidden');
+                }
+            });
+        }
+
+        // Multi-Item Checkout Shopping Cart WhatsApp Dispatch Packaging Rules 
+        function submitCartToWhatsApp() {
+            if (currentCart.length === 0) {
+                alert('আপনার শপিং কার্টটি বর্তমানে একদম খালি! অনুগ্রহ করে আগে পণ্য যোগ করুন।');
+                return;
+            }
+
+            let textMessageTemplate = `আসসালামু আলাইকুম SK Computer, আমি ওয়েবসাইট ক্যাটালগ থেকে নিচের পণ্যগুলো অর্ডার করতে চাই:\n\n`;
+            let runningSumBill = 0;
+
+            currentCart.forEach((item, index) => {
+                const lineItemCost = item.price * item.qty;
+                runningSumBill += lineItemCost;
+                textMessageTemplate += `${index + 1}. ${item.title}\n   পরিমাণ: ${item.qty} টি — সাবটোটাল: ${lineItemCost.toLocaleString('bn-BD')} ৳\n\n`;
+            });
+
+            textMessageTemplate += `সর্বমোট প্রদেয় বিল: ${runningSumBill.toLocaleString('bn-BD')} ৳\n\nদয়া করে অর্ডারটির প্রাপ্যতা ও ডেলিভারির সময় কনফার্ম করুন। ধন্যবাদ!`;
+            window.open(`https://wa.me/8801791533811?text=${encodeURIComponent(textMessageTemplate)}`, '_blank');
+        }
+    </script>
+
+</body>
+</html>
