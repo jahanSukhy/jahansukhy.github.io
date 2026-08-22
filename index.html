@@ -24,17 +24,15 @@ nav{position:sticky;top:0;z-index:200;background:rgba(255,255,255,0.96);backdrop
 .nav-logo-icon{width:38px;height:38px;border-radius:50%;background:var(--red);display:flex;align-items:center;justify-content:center;font-size:18px;animation:pulse 2.5s ease-in-out infinite}
 @keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(232,41,74,0.35)}50%{box-shadow:0 0 0 8px rgba(232,41,74,0)}}
 .nav-logo span{font-size:1.25rem;font-weight:800;color:var(--dark)}.nav-logo span em{font-style:normal;color:var(--red)}
-.nav-links{display:flex;gap:30px;list-style:none;align-items:center}
-.nav-links a{text-decoration:none;font-weight:600;font-size:0.9rem;color:var(--gray);transition:color .2s;cursor:pointer}
+.nav-links{display:flex;gap:22px;list-style:none;align-items:center;flex-wrap:nowrap;white-space:nowrap}
+.nav-links a{text-decoration:none;font-weight:600;font-size:0.88rem;color:var(--gray);transition:color .2s;cursor:pointer}
 .nav-links a:hover,.nav-links a.active{color:var(--red)}
 .nav-links a.active{border-bottom:2px solid var(--red);padding-bottom:4px}
-.nav-tracker-link{background:var(--red-soft);color:var(--red)!important;padding:8px 16px;border-radius:50px;border:1px solid var(--red-mid);font-weight:700!important}
-.nav-tracker-link:hover{background:var(--red)!important;color:white!important}
-.nav-emergency-link{background:#1A0A0E;color:white!important;padding:8px 17px;border-radius:50px;font-weight:800!important;animation:emergpulse 1.8s ease-in-out infinite}
+.nav-tracker-link,.nav-signup-link{color:var(--red)!important;font-weight:700!important}
+.nav-tracker-link:hover,.nav-signup-link:hover{color:#C41E38!important}
+.nav-emergency-link{background:#1A0A0E;color:white!important;padding:8px 16px;border-radius:50px;font-weight:800!important;font-size:.84rem!important;animation:emergpulse 1.8s ease-in-out infinite;flex-shrink:0}
 @keyframes emergpulse{0%,100%{box-shadow:0 0 0 0 rgba(232,41,74,0.5)}50%{box-shadow:0 0 0 6px rgba(232,41,74,0)}}
 .nav-emergency-link:hover{background:var(--red)!important}
-.nav-signup-link{background:linear-gradient(135deg,var(--red-soft),#FFE8ED);color:var(--red)!important;padding:8px 16px;border-radius:50px;border:1px solid var(--red-mid);font-weight:700!important}
-.nav-signup-link:hover{background:var(--red)!important;color:white!important}
 .btn-primary{background:var(--red);color:white;text-decoration:none;padding:14px 32px;border-radius:50px;font-weight:800;font-family:var(--font-body);font-size:1rem;transition:all .2s;display:inline-flex;align-items:center;gap:8px;box-shadow:0 6px 20px rgba(232,41,74,0.3);cursor:pointer;border:none}
 .btn-primary:hover{background:#C41E38;transform:translateY(-2px)}
 .btn-secondary{color:var(--dark);text-decoration:none;font-weight:700;font-size:0.95rem;display:inline-flex;align-items:center;gap:6px;cursor:pointer}
@@ -311,8 +309,6 @@ footer ul a:hover{color:var(--red-light)}
 }
 
 
-.nav-cta{background:var(--red);color:white;border:none;padding:10px 20px;border-radius:50px;font-family:var(--font-body);font-size:0.88rem;font-weight:700;cursor:pointer;transition:background .2s,transform .15s}
-.nav-cta:hover{background:#C41E38;transform:translateY(-1px)}
 .ham-btn{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:6px;border-radius:8px;margin-left:8px}
 .ham-btn span{display:block;width:22px;height:2px;background:var(--dark);border-radius:2px;transition:all .3s}
 .ham-btn.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
@@ -325,12 +321,14 @@ footer ul a:hover{color:var(--red-light)}
 .mobile-menu .mm-emerg{background:#1A0A0E;color:white!important;text-align:center;margin-top:6px;animation:emergpulse 1.8s ease-in-out infinite}
 .mobile-menu .mm-emerg:hover{background:var(--red)!important}
 
+/* ── NAV COLLAPSE (own breakpoint so links never wrap/squish before switching to the hamburger) ── */
+@media(max-width:1180px){
+  .nav-links{display:none}
+  .ham-btn{display:flex}
+}
+
 /* ── TABLET ── */
 @media(max-width:960px){
-  .nav-links{display:none}
-  .nav-cta{display:none}
-  .ham-btn{display:flex}
-
   .hero{grid-template-columns:1fr;padding:36px 5% 40px;min-height:auto}
   .hero::before{width:280px;height:280px;top:-40px;right:-40px}
   .hero-visual{display:none}
@@ -545,6 +543,151 @@ footer ul a:hover{color:var(--red-light)}
   .sf-grid{grid-template-columns:1fr}
   .sf-blood-grid{grid-template-columns:repeat(4,1fr)}
   .impact-numbers{grid-template-columns:1fr 1fr 1fr}
+}
+
+/* ══ DEMO BANNER (shown atop tracker/emergency demo pages) ══ */
+.demo-banner{background:var(--dark);color:white;padding:12px 20px;text-align:center;font-size:.85rem;font-weight:700;display:flex;align-items:center;justify-content:center;gap:10px;flex-wrap:wrap}
+.demo-banner span.dbtag{background:var(--red);padding:3px 10px;border-radius:50px;font-size:.7rem;letter-spacing:.05em;text-transform:uppercase}
+.demo-banner a{color:var(--red-light);text-decoration:underline;cursor:pointer;font-weight:800}
+
+/* ══ DEMO HUB PAGE ══ */
+.demo-hub-page{background:var(--cream);min-height:100vh}
+.demo-hub-hero{background:linear-gradient(135deg,var(--dark) 0%,#2A1015 60%,var(--dark) 100%);padding:56px 5% 44px;text-align:center}
+.demo-hub-hero h1{font-family:var(--font-head);font-size:clamp(2rem,4.5vw,3.1rem);color:white;margin-bottom:12px;line-height:1.2}
+.demo-hub-hero h1 em{font-style:italic;color:var(--red-light)}
+.demo-hub-hero p{color:rgba(255,255,255,.72);font-size:1rem;max-width:560px;margin:0 auto}
+.demo-hub-grid{max-width:900px;margin:-30px auto 0;padding:0 5% 60px;display:grid;grid-template-columns:1fr 1fr;gap:24px;position:relative;z-index:2}
+.demo-hub-card{background:white;border-radius:24px;padding:32px 28px;box-shadow:var(--shadow-card);border:1px solid var(--red-mid);text-align:center;cursor:pointer;transition:transform .2s}
+.demo-hub-card:hover{transform:translateY(-4px)}
+.demo-hub-card .dhc-icon{font-size:2.6rem;margin-bottom:14px}
+.demo-hub-card h3{font-family:var(--font-head);font-size:1.3rem;margin-bottom:8px}
+.demo-hub-card p{color:var(--gray);font-size:.88rem;line-height:1.6;margin-bottom:18px}
+@media(max-width:700px){.demo-hub-grid{grid-template-columns:1fr}}
+
+/* ══ DEMO WORKSPACE SHELL ══ */
+.demo-subnav{background:var(--dark);position:sticky;top:0;z-index:150;border-bottom:1px solid rgba(255,255,255,.08)}
+.demo-subnav-inner{max-width:1200px;margin:0 auto;padding:0 5%;display:flex;align-items:center;gap:24px;height:56px}
+.demo-subnav-org{color:white;font-weight:800;font-size:.9rem;display:flex;align-items:center;gap:8px;white-space:nowrap}
+.demo-subnav-tag{background:var(--red);color:white;font-size:.62rem;padding:2px 9px;border-radius:50px;letter-spacing:.06em;font-weight:800}
+.demo-subnav-tabs{display:flex;gap:4px;flex:1;overflow-x:auto}
+.demo-subnav-tabs a{color:rgba(255,255,255,.55);text-decoration:none;font-size:.83rem;font-weight:700;padding:8px 14px;border-radius:8px;white-space:nowrap;cursor:pointer;transition:all .15s}
+.demo-subnav-tabs a:hover{color:white;background:rgba(255,255,255,.06)}
+.demo-subnav-tabs a.active{color:white;background:rgba(232,41,74,.22)}
+.demo-subnav-exit{color:rgba(255,255,255,.45)!important;font-size:.8rem!important;font-weight:700!important;text-decoration:none;white-space:nowrap;cursor:pointer}
+.demo-subnav-exit:hover{color:white!important}
+@media(max-width:760px){
+  .demo-subnav-inner{gap:12px;padding:0 4%}
+  .demo-subnav-org span:not(.demo-subnav-tag){display:none}
+  .demo-subnav-tabs a{padding:8px 10px;font-size:.78rem}
+}
+
+/* dashboard */
+.demo-dash-body{max-width:1200px;margin:0 auto;padding:32px 5% 60px}
+.demo-dash-head{display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:16px;margin-bottom:26px}
+.demo-dash-head h1{font-family:var(--font-head);font-size:clamp(1.6rem,3vw,2.2rem)}
+.demo-dash-head h1 em{font-style:italic;color:var(--red)}
+.demo-dash-head p{color:var(--gray);font-size:.9rem;margin-top:4px}
+.demo-stat-row{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:32px}
+.demo-stat-card{background:white;border:1px solid var(--red-mid);border-radius:18px;padding:20px}
+.demo-stat-card .n{font-family:var(--font-head);font-size:2rem;font-weight:700;color:var(--dark);display:block}
+.demo-stat-card .l{font-size:.8rem;color:var(--gray);margin-top:2px}
+.demo-stat-card .trend{font-size:.72rem;font-weight:700;color:var(--green);margin-top:6px;display:block}
+.demo-quick-row{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:32px}
+.demo-quick-card{background:white;border:1px solid var(--red-mid);border-radius:18px;padding:22px 18px;cursor:pointer;transition:transform .15s;text-align:center}
+.demo-quick-card:hover{transform:translateY(-3px)}
+.demo-quick-card .qi{font-size:1.8rem;margin-bottom:8px}
+.demo-quick-card h4{font-size:.9rem;margin-bottom:4px}
+.demo-quick-card p{font-size:.76rem;color:var(--gray);line-height:1.5}
+.demo-two-col{display:grid;grid-template-columns:1.4fr 1fr;gap:20px}
+.demo-panel{background:white;border:1px solid var(--red-mid);border-radius:20px;padding:22px 24px}
+.demo-panel h3{font-family:var(--font-head);font-size:1.1rem;margin-bottom:14px}
+.demo-activity{display:flex;flex-direction:column}
+.demo-activity-row{display:flex;align-items:flex-start;gap:12px;padding:10px 0;border-bottom:1px dashed var(--red-mid);font-size:.85rem}
+.demo-activity-row:last-child{border-bottom:none}
+.demo-activity-icon{width:32px;height:32px;border-radius:50%;background:var(--red-soft);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:.9rem}
+.demo-activity-text strong{color:var(--dark)}
+.demo-activity-time{font-size:.72rem;color:var(--gray);display:block;margin-top:2px}
+.demo-org-card .row{display:flex;justify-content:space-between;padding:7px 0;border-bottom:1px dashed var(--red-mid);font-size:.85rem}
+.demo-org-card .row:last-child{border-bottom:none}
+.demo-org-card .row span{color:var(--gray)}
+@media(max-width:900px){.demo-stat-row,.demo-quick-row{grid-template-columns:1fr 1fr}.demo-two-col{grid-template-columns:1fr}}
+
+/* team page */
+.demo-team-body{max-width:900px;margin:0 auto;padding:32px 5% 60px}
+.demo-team-toolbar{display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;flex-wrap:wrap;gap:12px}
+.demo-team-list{background:white;border:1px solid var(--red-mid);border-radius:20px;overflow:hidden}
+.demo-team-row{display:flex;align-items:center;gap:14px;padding:16px 20px;border-bottom:1px solid var(--red-soft)}
+.demo-team-row:last-child{border-bottom:none}
+.demo-team-avatar{width:42px;height:42px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:white;font-weight:800;font-size:.85rem;flex-shrink:0}
+.demo-team-info{flex:1;min-width:0}
+.demo-team-name{font-weight:700;font-size:.92rem}
+.demo-team-email{font-size:.78rem;color:var(--gray)}
+.demo-role-badge{font-size:.72rem;font-weight:800;padding:5px 12px;border-radius:50px;white-space:nowrap}
+.role-owner{background:#FFF0F2;color:var(--red)}
+.role-admin{background:#E6F1FB;color:var(--blue)}
+.role-staff{background:#E1F5EE;color:var(--green)}
+.role-viewer{background:#F1F0F5;color:var(--gray)}
+
+/* settings page */
+.demo-settings-body{max-width:640px;margin:0 auto;padding:32px 5% 60px}
+.demo-settings-card{background:white;border:1px solid var(--red-mid);border-radius:24px;padding:32px}
+
+/* ══ ORGANIZATION APPLICATION PAGE ══ */
+.org-apply-page{background:var(--cream);min-height:100vh}
+.oa-hero{background:linear-gradient(135deg,var(--dark) 0%,#2A1015 60%,var(--dark) 100%);padding:56px 5% 44px;text-align:center}
+.oa-hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);color:white;padding:6px 18px;border-radius:50px;font-size:.78rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase;margin-bottom:20px}
+.oa-hero h1{font-family:var(--font-head);font-size:clamp(2rem,4.5vw,3.1rem);color:white;margin-bottom:12px;line-height:1.2}
+.oa-hero h1 em{font-style:italic;color:var(--red-light)}
+.oa-hero p{color:rgba(255,255,255,.72);font-size:1rem;max-width:520px;margin:0 auto}
+
+.oa-steps{display:flex;justify-content:center;gap:0;max-width:640px;margin:-24px auto 0;padding:0 5%;position:relative;z-index:2}
+.oa-step{flex:1;text-align:center;position:relative}
+.oa-step-dot{width:34px;height:34px;border-radius:50%;background:white;border:2px solid var(--red-mid);color:var(--gray);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:.85rem;margin:0 auto 8px;transition:all .2s}
+.oa-step.active .oa-step-dot,.oa-step.done .oa-step-dot{background:var(--red);border-color:var(--red);color:white}
+.oa-step-label{font-size:.72rem;font-weight:700;color:var(--gray);text-transform:uppercase;letter-spacing:.03em}
+.oa-step.active .oa-step-label{color:var(--red)}
+.oa-step:not(:last-child)::after{content:'';position:absolute;top:17px;left:calc(50% + 24px);width:calc(100% - 48px);height:2px;background:var(--red-mid)}
+.oa-step.done:not(:last-child)::after{background:var(--red)}
+
+.oa-body{max-width:640px;margin:0 auto;padding:36px 5% 60px}
+.oa-card{background:white;border-radius:28px;padding:36px 32px;box-shadow:var(--shadow-card);border:1px solid var(--red-mid)}
+.oa-card h2{font-family:var(--font-head);font-size:1.5rem;margin-bottom:6px}
+.oa-card h2 em{font-style:italic;color:var(--red)}
+.oa-card .oa-intro{font-size:.88rem;color:var(--gray);margin-bottom:24px;line-height:1.6}
+.oa-panel{display:none}
+.oa-panel.active{display:block}
+
+.oa-swatches{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:18px}
+.oa-swatch{width:44px;height:44px;border-radius:50%;cursor:pointer;border:3px solid transparent;transition:all .15s;position:relative}
+.oa-swatch.selected{border-color:var(--dark);transform:scale(1.1)}
+.oa-swatch.selected::after{content:'✓';position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:white;font-weight:800;font-size:.9rem}
+
+.oa-subdomain-wrap{display:flex;align-items:center;border:1.5px solid var(--red-mid);border-radius:12px;overflow:hidden}
+.oa-subdomain-wrap input{border:none;flex:1;padding:11px 14px;font-family:var(--font-body);font-size:.9rem;outline:none;color:var(--dark)}
+.oa-subdomain-suffix{background:var(--red-soft);color:var(--gray);padding:11px 14px;font-size:.85rem;white-space:nowrap;font-weight:600}
+
+.oa-review-row{display:flex;justify-content:space-between;gap:12px;padding:10px 0;border-bottom:1px dashed var(--red-mid);font-size:.88rem}
+.oa-review-row:last-child{border-bottom:none}
+.oa-review-row span{color:var(--gray)}
+.oa-review-row strong{color:var(--dark);text-align:right}
+
+.oa-nav{display:flex;gap:12px;margin-top:24px}
+.oa-btn-back{flex:1;background:none;border:1.5px solid var(--red-mid);border-radius:50px;padding:13px;font-family:var(--font-body);font-weight:700;font-size:.9rem;color:var(--gray);cursor:pointer}
+.oa-btn-next{flex:2;background:var(--red);color:white;border:none;border-radius:50px;padding:13px;font-family:var(--font-body);font-weight:800;font-size:.95rem;cursor:pointer;transition:background .2s}
+.oa-btn-next:hover{background:#C41E38}
+
+.oa-success{display:none;text-align:center;padding:20px 4px}
+.oa-success .succ-icon{font-size:4rem;margin-bottom:16px}
+.oa-success h3{font-family:var(--font-head);font-size:1.6rem;margin-bottom:8px;color:var(--green)}
+.oa-success p{font-size:.92rem;color:var(--gray);line-height:1.7;margin-bottom:20px}
+.oa-ref-card{background:var(--red-soft);border:1px solid var(--red-mid);border-radius:16px;padding:18px 22px;margin-bottom:20px;font-size:.88rem;text-align:left}
+.oa-ref-card div{display:flex;justify-content:space-between;padding:5px 0}
+.oa-ref-card span{color:var(--gray)}
+.oa-ref-card strong{color:var(--dark)}
+
+@media(max-width:600px){
+  .oa-card{padding:26px 20px;border-radius:20px}
+  .oa-step-label{font-size:.62rem}
 }
 
 /* ══ ABOUT PAGE ══ */
@@ -819,15 +962,12 @@ footer{border-top:1px solid rgba(232,41,74,.18)}
   </a>
   <ul class="nav-links">
     <li><a id="nav-home" class="active" onclick="showPage('home')">Home</a></li>
-    <li><a onclick="showPage('home');goTo('#why')">Why Donate</a></li>
+    <li><a onclick="showPage('home');goTo('#why')">Why HopeAlert</a></li>
     <li><a id="nav-about" onclick="showPage('about')">About Us</a></li>
     <li><a onclick="showPage('home');goTo('#how')">How It Works</a></li>
-    <li><a id="nav-signup" class="nav-signup-link" onclick="showPage('signup')">❤️ Become a Donor</a></li>
-    <li><a id="nav-tracker" class="nav-tracker-link" onclick="showPage('tracker')">🩸 Tracker</a></li>
-    <li><a id="nav-emergency" class="nav-emergency-link" onclick="showPage('emergency')">🚨 Emergency</a></li>
-    
+    <li><a id="nav-demo" class="nav-tracker-link" onclick="showPage('demo')">See Demo</a></li>
+    <li><a id="nav-org-apply" class="nav-emergency-link" onclick="showPage('org-apply')">Apply for Your Organization</a></li>
   </ul>
-  <button class="nav-cta" onclick="showPage('emergency')">Need Blood? 🚨</button>
   <button class="ham-btn" id="hamBtn" onclick="toggleMenu()" aria-label="Menu">
     <span></span><span></span><span></span>
   </button>
@@ -836,32 +976,29 @@ footer{border-top:1px solid rgba(232,41,74,.18)}
 <!-- MOBILE MENU -->
 <div class="mobile-menu" id="mobileMenu">
   <a id="mm-home" class="active" onclick="showPage('home');closeMenu()">🏠 Home</a>
-  <a onclick="showPage('home');goTo('#why');closeMenu()">❤️ Why Donate</a>
+  <a onclick="showPage('home');goTo('#why');closeMenu()">Why HopeAlert</a>
   <a id="mm-about" onclick="showPage('about');closeMenu()">🏛️ About Us</a>
   <a onclick="showPage('home');goTo('#how');closeMenu()">📋 How It Works</a>
-  <a onclick="showPage('home');goTo('#types');closeMenu()">🩸 Blood Types</a>
-  <a id="mm-signup" onclick="showPage('signup');closeMenu()">❤️ Become a Donor</a>
-  <a id="mm-tracker" onclick="showPage('tracker');closeMenu()">📊 Donor Tracker</a>
+  <a id="mm-demo" onclick="showPage('demo');closeMenu()">👀 See Demo</a>
   <a id="mm-privacy" onclick="showPage('privacy');closeMenu()">🔒 Privacy Policy</a>
-  <a class="mm-emerg" id="mm-emergency" onclick="showPage('emergency');closeMenu()">🚨 Emergency — Post Blood Request</a>
+  <a class="mm-emerg" id="mm-org-apply" onclick="showPage('org-apply');closeMenu()">🏥 Apply for Your Organization</a>
 </div>
 
 <!-- PAGE: HOME -->
 <div id="page-home" class="page active">
 <section class="hero">
   <div class="hero-text">
-    <div class="hero-badge"><span></span> Trusted Worldwide Since 1988</div>
-    <h1>Your blood can<br>save <em>three lives</em><br>today.</h1>
-    <p>Every two seconds, someone around the world needs blood. One donation from you can be the difference between life and death for up to three people.</p>
+    <div class="hero-badge"><span></span> Free for Blood Banks, Hospitals &amp; NGOs</div>
+    <h1>Give your organization<br>its own <em>donor network</em><br>&amp; emergency board.</h1>
+    <p>HopeAlert is a free platform that gives every blood bank, hospital, and humanitarian organization its own private workspace — donor records, emergency requests, and staff logins kept separate from every other organization. Apply below to get yours.</p>
     <div class="hero-actions">
-      <button class="btn-primary" onclick="showPage('tracker')">Donate Blood ❤️</button>
-      <button class="btn-primary" style="background:#1A0A0E;box-shadow:none" onclick="showPage('emergency')">🚨 Need Blood?</button>
+      <button class="btn-primary" onclick="showPage('org-apply')">Apply for Your Organization</button>
       <span class="btn-secondary" onclick="showPage('home');goTo('#how')">How it works <span class="btn-arrow">→</span></span>
     </div>
   </div>
   <div class="hero-visual">
     <div class="hero-card">
-      <div class="hero-card-top"><div class="hero-drop">🩸</div><div><p>Blood Availability</p><p>Live inventory — updated daily</p></div></div>
+      <div class="hero-card-top"><div class="hero-drop">🩸</div><div><p>Blood Availability</p><p>Preview — your organization's dashboard</p></div></div>
       <div class="blood-types">
         <div class="bt">A+</div><div class="bt critical">O−</div>
         <div class="bt">B+</div><div class="bt">AB+</div>
@@ -875,35 +1012,35 @@ footer{border-top:1px solid rgba(232,41,74,.18)}
   </div>
 </section>
 <section class="stats">
-  <div class="stat-item"><span class="stat-num">120K+</span><p class="stat-label">Lives Saved This Year</p></div>
-  <div class="stat-item"><span class="stat-num">54</span><p class="stat-label">Partner Hospitals</p></div>
-  <div class="stat-item"><span class="stat-num">98K</span><p class="stat-label">Registered Donors</p></div>
-  <div class="stat-item"><span class="stat-num">30+</span><p class="stat-label">Countries Reached</p></div>
+  <div class="stat-item"><span class="stat-num">120K+</span><p class="stat-label">Lives Saved via Partner Organizations</p></div>
+  <div class="stat-item"><span class="stat-num">54</span><p class="stat-label">Hospitals &amp; Blood Banks Using HopeAlert</p></div>
+  <div class="stat-item"><span class="stat-num">98K</span><p class="stat-label">Donors Managed on the Platform</p></div>
+  <div class="stat-item"><span class="stat-num">30+</span><p class="stat-label">Countries with Active Organizations</p></div>
 </section>
 <section class="section" id="why">
-  <div class="section-tag">Why It Matters</div>
-  <h2>Every drop is a<br><em>gift of life</em></h2>
-  <p class="section-sub">Blood cannot be manufactured — it can only come from generous people like you.</p>
+  <div class="section-tag">Built for Organizations</div>
+  <h2>A simple system for<br><em>donor coordination</em></h2>
+  <p class="section-sub">Blood banks, hospitals, and NGOs need to know who their donors are, reach them fast, and keep supply matched to demand. HopeAlert handles the coordination so your staff can focus on patients.</p>
   <div class="cards-grid">
-    <div class="card"><div class="card-icon">🚑</div><h3>Emergency Surgeries</h3><p>Accident victims and trauma patients often need large amounts of blood immediately. Your donation keeps emergency rooms prepared.</p></div>
-    <div class="card"><div class="card-icon">👶</div><h3>Premature Babies</h3><p>Newborns with severe health conditions often require multiple transfusions just to survive their first weeks of life.</p></div>
-    <div class="card"><div class="card-icon">🎗️</div><h3>Cancer Treatment</h3><p>Patients undergoing chemotherapy frequently need blood and platelet transfusions to manage treatment side effects.</p></div>
-    <div class="card"><div class="card-icon">💉</div><h3>Chronic Conditions</h3><p>People with sickle cell disease, thalassemia, and other conditions rely on regular transfusions throughout their lives.</p></div>
-    <div class="card"><div class="card-icon">🌍</div><h3>Global Impact</h3><p>Your donation contributes to our worldwide network, helping regions facing natural disasters or healthcare shortages.</p></div>
-    <div class="card"><div class="card-icon">🔬</div><h3>Medical Research</h3><p>Donated blood also supports breakthrough research into blood disorders and transfusion medicine around the world.</p></div>
+    <div class="card"><div class="card-icon">🚑</div><h3>Faster Emergency Response</h3><p>Post an urgent blood need and reach every eligible, available donor in your network at once — instead of calling down a list.</p></div>
+    <div class="card"><div class="card-icon">🗂️</div><h3>Centralized Donor Records</h3><p>Keep every donor's blood type, eligibility date, and contact details in one place, organized and searchable by your staff.</p></div>
+    <div class="card"><div class="card-icon">🔒</div><h3>Private, Isolated Data</h3><p>Each organization's donor data is kept separate from every other organization on HopeAlert — nothing is shared or pooled without your consent.</p></div>
+    <div class="card"><div class="card-icon">📊</div><h3>Live Supply Visibility</h3><p>Track blood type availability and donor counts in real time, so your team can plan drives before a shortage becomes a crisis.</p></div>
+    <div class="card"><div class="card-icon">🏥</div><h3>Built for Multiple Facilities</h3><p>Whether you run one clinic or a network of hospitals, HopeAlert scales to fit how your organization is structured.</p></div>
+    <div class="card"><div class="card-icon">💸</div><h3>Free to Use</h3><p>HopeAlert is free for blood banks, hospitals, and NGOs — no license fees or per-donor charges to manage your network.</p></div>
   </div>
 </section>
 <section class="how" id="how">
   <div style="text-align:center">
-    <div class="section-tag">Simple Process</div>
-    <h2 style="font-family:var(--font-head);font-size:clamp(2rem,4vw,2.8rem);margin-bottom:12px">Donating is <em style="font-style:italic;color:var(--red)">easier</em> than you think</h2>
-    <p style="color:var(--gray);font-size:1.05rem;max-width:480px;margin:0 auto">The whole process takes under an hour.</p>
+    <div class="section-tag">How Organizations Use It</div>
+    <h2 style="font-family:var(--font-head);font-size:clamp(2rem,4vw,2.8rem);margin-bottom:12px">From <em style="font-style:italic;color:var(--red)">sign-up</em> to emergency-ready</h2>
+    <p style="color:var(--gray);font-size:1.05rem;max-width:480px;margin:0 auto">Get your organization set up on HopeAlert and start coordinating donors in a few steps.</p>
   </div>
   <div class="steps">
-    <div class="step"><div class="step-num">📋</div><h3>Register</h3><p>Fill out a quick health questionnaire. It only takes about 10 minutes.</p></div>
-    <div class="step"><div class="step-num">🩺</div><h3>Mini Check-up</h3><p>A nurse checks your blood pressure, pulse, temperature, and haemoglobin level.</p></div>
-    <div class="step"><div class="step-num">🩸</div><h3>Donate</h3><p>The actual donation takes only 8–10 minutes. You're comfortably seated throughout.</p></div>
-    <div class="step"><div class="step-num">🍪</div><h3>Rest &amp; Refresh</h3><p>Enjoy snacks and juice, rest for 15 minutes, then go about your day!</p></div>
+    <div class="step"><div class="step-num">🏥</div><h3>Set Up Your Organization</h3><p>Create your organization's account and get a private, branded space for your donor network.</p></div>
+    <div class="step"><div class="step-num">📋</div><h3>Onboard Donors</h3><p>Register existing and new donors with blood type, eligibility, and contact details in your donor tracker.</p></div>
+    <div class="step"><div class="step-num">🚨</div><h3>Post Emergency Needs</h3><p>When supply runs short, post a request and reach every matching, eligible donor in your network at once.</p></div>
+    <div class="step"><div class="step-num">📊</div><h3>Track &amp; Coordinate</h3><p>Monitor donor availability and response in real time so your staff can plan ahead, not scramble.</p></div>
   </div>
 </section>
 <section class="section" id="types" style="padding-bottom:60px">
@@ -925,33 +1062,111 @@ footer{border-top:1px solid rgba(232,41,74,.18)}
 </section>
 <section class="testi">
   <div style="text-align:center">
-    <div class="section-tag">Real Stories</div>
-    <h2 style="font-family:var(--font-head);font-size:clamp(2rem,4vw,2.8rem);margin-bottom:12px">Donors who <em style="font-style:italic;color:var(--red)">changed lives</em></h2>
+    <div class="section-tag">Trusted by Organizations</div>
+    <h2 style="font-family:var(--font-head);font-size:clamp(2rem,4vw,2.8rem);margin-bottom:12px">Built for teams like <em style="font-style:italic;color:var(--red)">yours</em></h2>
   </div>
   <div class="testi-grid">
-    <div class="testi-card"><div class="testi-stars">★★★★★</div><p class="testi-text">"I've been donating every 3 months for 8 years. Knowing someone might be alive because of me is indescribable."</p><div class="testi-author"><div class="testi-avatar" style="background:#E8294A">SR</div><div><div class="testi-name">Sarah Rahman</div><div class="testi-role">Regular donor, 32 donations</div></div></div></div>
-    <div class="testi-card"><div class="testi-stars">★★★★★</div><p class="testi-text">"My son needed blood transfusions during cancer treatment. Someone's donation kept him alive. I now donate in gratitude."</p><div class="testi-author"><div class="testi-avatar" style="background:#1D9E75">MK</div><div><div class="testi-name">Mohammed Karim</div><div class="testi-role">Donor &amp; recipient's father</div></div></div></div>
-    <div class="testi-card"><div class="testi-stars">★★★★★</div><p class="testi-text">"I was terrified of needles but it was over before I knew it. Now I bring my whole office every quarter!"</p><div class="testi-author"><div class="testi-avatar" style="background:#534AB7">JL</div><div><div class="testi-name">Julia Lim</div><div class="testi-role">First-timer turned ambassador</div></div></div></div>
+    <div class="testi-card"><div class="testi-stars">★★★★★</div><p class="testi-text">"HopeAlert cut our average emergency response time from hours to minutes. We can see who's eligible and reach them instantly."</p><div class="testi-author"><div class="testi-avatar" style="background:#E8294A">SR</div><div><div class="testi-name">Sarah Rahman</div><div class="testi-role">Blood Bank Director, Dhaka</div></div></div></div>
+    <div class="testi-card"><div class="testi-stars">★★★★★</div><p class="testi-text">"Our donor records used to live in spreadsheets across three departments. Now it's one system, and every unit is tracked."</p><div class="testi-author"><div class="testi-avatar" style="background:#1D9E75">MK</div><div><div class="testi-name">Mohammed Karim</div><div class="testi-role">Hospital Operations Manager</div></div></div></div>
+    <div class="testi-card"><div class="testi-stars">★★★★★</div><p class="testi-text">"As an NGO running mobile drives across several districts, keeping our own donor list private and separate mattered a lot. HopeAlert made that simple."</p><div class="testi-author"><div class="testi-avatar" style="background:#534AB7">JL</div><div><div class="testi-name">Julia Lim</div><div class="testi-role">Program Lead, community NGO</div></div></div></div>
   </div>
 </section>
 <section class="cta-banner">
-  <h2>Ready to save a <em>life</em>?</h2>
-  <p>Book your appointment today. It takes less than an hour and can save up to three lives.</p>
-  <button class="btn-primary" onclick="showPage('emergency')" style="margin-right:12px">🚨 Post Emergency</button>
-  <button class="btn-primary" style="background:rgba(255,255,255,.12);box-shadow:none" onclick="showPage('tracker')">🩸 Donor Tracker</button>
+  <h2>Ready to give your organization <em>its own workspace</em>?</h2>
+  <p>HopeAlert is free for blood banks, hospitals, and NGOs. Apply today and most applications are reviewed within 48 hours.</p>
+  <button class="btn-primary" onclick="showPage('org-apply')">Apply for Your Organization</button>
 </section>
 <footer>
-  <div><div class="footer-logo org-logo-full"><em>Hope</em>Alert Blood Bank</div><p>Connecting generous donors with patients who need blood — across your community and around the world.</p>
+  <div><div class="footer-logo org-logo-full"><em>Hope</em>Alert Blood Bank</div><p>A free donor management and emergency response system for blood banks, hospitals, and humanitarian organizations.</p>
   <div class="footer-social"><a class="social-btn" href="#">f</a><a class="social-btn" href="#">in</a><a class="social-btn" href="#">𝕏</a><a class="social-btn" href="#">▶</a></div></div>
-  <div><h4>Quick Links</h4><ul><li><a onclick="showPage('emergency')">🚨 Emergency</a></li><li><a onclick="showPage('tracker')">Donor Tracker</a></li><li><a onclick="showPage('home');goTo('#why')">Why Donate</a></li><li><a onclick="showPage('home');goTo('#how')">How It Works</a></li></ul></div>
-  <div><h4>Information</h4><ul><li><a href="#">Eligibility</a></li><li><a href="#">Blood Types</a></li><li><a href="#">FAQs</a></li><li><a href="#">News &amp; Events</a></li></ul></div>
+  <div><h4>Quick Links</h4><ul><li><a onclick="showPage('org-apply')">Apply for Your Organization</a></li><li><a onclick="showPage('about')">About Us</a></li><li><a onclick="showPage('home');goTo('#why')">Why HopeAlert</a></li><li><a onclick="showPage('home');goTo('#how')">How It Works</a></li></ul></div>
+  <div><h4>Information</h4><ul><li><a href="#">Eligibility</a></li><li><a href="#">Blood Types</a></li><li><a onclick="showPage('privacy')">Privacy Policy</a></li><li><a href="#">FAQs</a></li></ul></div>
   <div><h4>Contact Us</h4><ul><li><a href="#">📍 <span class="org-address">123 Health Street</span></a></li><li><a href="#">📞 <span class="org-phone">+1 800-HOPEALERT</span></a></li><li><a href="#">✉️ <span class="org-email">info@hopealert.org</span></a></li><li><a href="#">🕐 Mon–Sat, 8am–6pm</a></li></ul></div>
   <div class="footer-bottom">© 2026 <span class="org-fullname">HopeAlert Blood Bank</span>. All rights reserved. ❤️</div>
 </footer>
 </div>
 
+<!-- PAGE: DEMO DASHBOARD -->
+<div id="page-demo" class="page demo-hub-page">
+  <div class="demo-subnav">
+    <div class="demo-subnav-inner">
+      <span class="demo-subnav-org">🩺 Sunamganj Blood Bank <span class="demo-subnav-tag">DEMO</span></span>
+      <div class="demo-subnav-tabs">
+        <a data-dtab="dashboard" onclick="showPage('demo')">📊 Dashboard</a>
+        <a data-dtab="tracker" onclick="showPage('tracker')">🩸 Donors</a>
+        <a data-dtab="emergency" onclick="showPage('emergency')">🚨 Emergency</a>
+        <a data-dtab="team" onclick="showPage('demo-team')">👥 Team</a>
+        <a data-dtab="settings" onclick="showPage('demo-settings')">⚙️ Settings</a>
+      </div>
+      <a class="demo-subnav-exit" onclick="showPage('home')">Exit Demo ✕</a>
+    </div>
+  </div>
+
+  <div class="demo-dash-body">
+    <div class="demo-dash-head">
+      <div>
+        <h1>Welcome back, <em>Sunamganj Blood Bank</em></h1>
+        <p>This is a sample organization's dashboard — the workspace your own organization gets after applying. Nothing here is connected to a real account.</p>
+      </div>
+      <span class="btn-primary" style="padding:11px 22px;font-size:.86rem;background:#1A0A0E;box-shadow:none" onclick="showPage('org-apply')">Apply for Your Own Workspace →</span>
+    </div>
+
+    <div class="demo-stat-row" id="demoStatRow"></div>
+
+    <div class="demo-quick-row">
+      <div class="demo-quick-card" onclick="showPage('tracker')"><div class="qi">🩸</div><h4>Manage Donors</h4><p>View, add, and track your donor network</p></div>
+      <div class="demo-quick-card" onclick="showPage('emergency')"><div class="qi">🚨</div><h4>Post Emergency</h4><p>Request urgent blood and notify matches</p></div>
+      <div class="demo-quick-card" onclick="showPage('demo-team')"><div class="qi">👥</div><h4>Manage Team</h4><p>Invite staff and set permissions</p></div>
+      <div class="demo-quick-card" onclick="showPage('demo-settings')"><div class="qi">⚙️</div><h4>Org Settings</h4><p>Branding, profile &amp; workspace info</p></div>
+    </div>
+
+    <div class="demo-two-col">
+      <div class="demo-panel">
+        <h3>Recent Activity</h3>
+        <div class="demo-activity">
+          <div class="demo-activity-row"><div class="demo-activity-icon">🩸</div><div class="demo-activity-text"><strong>Karim Uddin</strong> registered as a new O+ donor<span class="demo-activity-time">2 hours ago</span></div></div>
+          <div class="demo-activity-row"><div class="demo-activity-icon">🚨</div><div class="demo-activity-text"><strong>Dhaka Medical College</strong> posted an urgent O− request<span class="demo-activity-time">5 hours ago</span></div></div>
+          <div class="demo-activity-row"><div class="demo-activity-icon">📲</div><div class="demo-activity-text">3 donors notified for upcoming eligibility<span class="demo-activity-time">Yesterday</span></div></div>
+          <div class="demo-activity-row"><div class="demo-activity-icon">👥</div><div class="demo-activity-text"><strong>Rina Begum</strong> joined the team as Staff<span class="demo-activity-time">3 days ago</span></div></div>
+          <div class="demo-activity-row"><div class="demo-activity-icon">✅</div><div class="demo-activity-text">Emergency request for AB− marked fulfilled<span class="demo-activity-time">4 days ago</span></div></div>
+        </div>
+      </div>
+      <div class="demo-panel demo-org-card">
+        <h3>Organization Snapshot</h3>
+        <div class="row"><span>Name</span><strong>Sunamganj Blood Bank</strong></div>
+        <div class="row"><span>Type</span><strong>Blood Bank</strong></div>
+        <div class="row"><span>Workspace</span><strong>sunamganj.hopealert.org</strong></div>
+        <div class="row"><span>Plan</span><strong>Free</strong></div>
+        <div class="row"><span>Team size</span><strong>4 members</strong></div>
+        <div class="row"><span>Status</span><strong style="color:var(--green)">● Active</strong></div>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <div><div class="footer-logo org-logo-full"><em>Hope</em>Alert Blood Bank</div><p>A free donor management and emergency response system for blood banks, hospitals, and humanitarian organizations.</p></div>
+    <div><h4>Navigation</h4><ul><li><a onclick="showPage('home')">← Back to Home</a></li><li><a onclick="showPage('org-apply')">Apply for Your Organization</a></li></ul></div>
+    <div><h4>Contact</h4><ul><li><a href="#">✉️ <span class="org-email">info@hopealert.org</span></a></li></ul></div>
+    <div></div>
+    <div class="footer-bottom">© 2026 <span class="org-fullname">HopeAlert Blood Bank</span>. All rights reserved. ❤️</div>
+  </footer>
+</div>
+
 <!-- PAGE: TRACKER -->
 <div id="page-tracker" class="page tracker-page">
+  <div class="demo-subnav">
+    <div class="demo-subnav-inner">
+      <span class="demo-subnav-org">🩺 Sunamganj Blood Bank <span class="demo-subnav-tag">DEMO</span></span>
+      <div class="demo-subnav-tabs">
+        <a data-dtab="dashboard" onclick="showPage('demo')">📊 Dashboard</a>
+        <a data-dtab="tracker" onclick="showPage('tracker')">🩸 Donors</a>
+        <a data-dtab="emergency" onclick="showPage('emergency')">🚨 Emergency</a>
+        <a data-dtab="team" onclick="showPage('demo-team')">👥 Team</a>
+        <a data-dtab="settings" onclick="showPage('demo-settings')">⚙️ Settings</a>
+      </div>
+      <a class="demo-subnav-exit" onclick="showPage('home')">Exit Demo ✕</a>
+    </div>
+  </div>
   <div class="tracker-hero">
     <div class="section-tag" style="margin-bottom:14px">Staff Portal</div>
     <h1>Donor <em>Tracker</em></h1>
@@ -1027,7 +1242,7 @@ footer{border-top:1px solid rgba(232,41,74,.18)}
   </div>
   <footer>
     <div><div class="footer-logo org-logo-full"><em>Hope</em>Alert Blood Bank</div><p>Donor tracker — staff portal for managing donation cycles and notifications.</p></div>
-    <div><h4>Navigation</h4><ul><li><a onclick="showPage('home')">← Back to Home</a></li><li><a onclick="showPage('emergency')">🚨 Emergency Page</a></li></ul></div>
+    <div><h4>Navigation</h4><ul><li><a onclick="showPage('home')">← Back to Home</a></li><li><a onclick="showPage('demo')">📊 Dashboard</a></li><li><a onclick="showPage('emergency')">🚨 Emergency Page</a></li></ul></div>
     <div><h4>Contact</h4><ul><li><a href="#">📞 <span class="org-phone">+1 800-HOPEALERT</span></a></li><li><a href="#">✉️ <span class="org-email">info@hopealert.org</span></a></li></ul></div>
     <div></div>
     <div class="footer-bottom">© 2026 <span class="org-fullname">HopeAlert Blood Bank</span> — Donor Management Portal</div>
@@ -1036,6 +1251,19 @@ footer{border-top:1px solid rgba(232,41,74,.18)}
 
 <!-- PAGE: EMERGENCY -->
 <div id="page-emergency" class="page emerg-page">
+  <div class="demo-subnav">
+    <div class="demo-subnav-inner">
+      <span class="demo-subnav-org">🩺 Sunamganj Blood Bank <span class="demo-subnav-tag">DEMO</span></span>
+      <div class="demo-subnav-tabs">
+        <a data-dtab="dashboard" onclick="showPage('demo')">📊 Dashboard</a>
+        <a data-dtab="tracker" onclick="showPage('tracker')">🩸 Donors</a>
+        <a data-dtab="emergency" onclick="showPage('emergency')">🚨 Emergency</a>
+        <a data-dtab="team" onclick="showPage('demo-team')">👥 Team</a>
+        <a data-dtab="settings" onclick="showPage('demo-settings')">⚙️ Settings</a>
+      </div>
+      <a class="demo-subnav-exit" onclick="showPage('home')">Exit Demo ✕</a>
+    </div>
+  </div>
   <div class="emerg-hero">
     <div class="emerg-hero-tag"><div class="emerg-blink"></div> Live Emergency Board</div>
     <h1>Blood <em>Emergency</em><br>Request Portal</h1>
@@ -1121,7 +1349,7 @@ footer{border-top:1px solid rgba(232,41,74,.18)}
   </div>
   <footer style="border-top:1px solid rgba(232,41,74,.15)">
     <div><div class="footer-logo org-logo-full"><em>Hope</em>Alert Blood Bank</div><p>Emergency blood request portal — connecting patients with matching donors fast.</p></div>
-    <div><h4>Navigation</h4><ul><li><a onclick="showPage('home')">← Back to Home</a></li><li><a onclick="showPage('tracker')">🩸 Donor Tracker</a></li></ul></div>
+    <div><h4>Navigation</h4><ul><li><a onclick="showPage('home')">← Back to Home</a></li><li><a onclick="showPage('demo')">📊 Dashboard</a></li><li><a onclick="showPage('tracker')">🩸 Donor Tracker</a></li></ul></div>
     <div><h4>Emergency</h4><ul><li><a href="#">📞 Hotline: 800-BLOOD</a></li><li><a href="#">🏥 Find Hospitals</a></li></ul></div>
     <div></div>
     <div class="footer-bottom">© 2026 <span class="org-fullname">HopeAlert Blood Bank</span> — Emergency Portal</div>
@@ -1129,233 +1357,328 @@ footer{border-top:1px solid rgba(232,41,74,.18)}
 </div>
 
 
-<!-- PAGE: SIGNUP -->
-<div id="page-signup" class="page signup-page">
-  <div class="signup-hero">
-    <div class="signup-hero-badge">❤️ Save up to 3 lives per donation</div>
-    <h1>Become a <em class="org-shortname">HopeAlert</em><br>Blood Donor</h1>
-    <p>Register in 2 minutes. When you're eligible, we'll send you a reminder directly to your phone — no chasing, no forgetting.</p>
+
+<!-- PAGE: DEMO TEAM -->
+<div id="page-demo-team" class="page demo-hub-page">
+  <div class="demo-subnav">
+    <div class="demo-subnav-inner">
+      <span class="demo-subnav-org">🩺 Sunamganj Blood Bank <span class="demo-subnav-tag">DEMO</span></span>
+      <div class="demo-subnav-tabs">
+        <a data-dtab="dashboard" onclick="showPage('demo')">📊 Dashboard</a>
+        <a data-dtab="tracker" onclick="showPage('tracker')">🩸 Donors</a>
+        <a data-dtab="emergency" onclick="showPage('emergency')">🚨 Emergency</a>
+        <a data-dtab="team" onclick="showPage('demo-team')">👥 Team</a>
+        <a data-dtab="settings" onclick="showPage('demo-settings')">⚙️ Settings</a>
+      </div>
+      <a class="demo-subnav-exit" onclick="showPage('home')">Exit Demo ✕</a>
+    </div>
   </div>
 
-  <div class="signup-body">
-    <!-- FORM -->
-    <div class="signup-form-wrap" id="signupFormWrap">
-
-      <!-- SUCCESS STATE (hidden until submit) -->
-      <div class="signup-success" id="signupSuccess">
-        <div class="succ-icon">🎉</div>
-        <h3>You're registered!</h3>
-        <p>Welcome to the <span class="org-shortname">HopeAlert</span> donor family. We'll send you an SMS and WhatsApp message when your 90-day countdown completes and you're ready to donate again.</p>
-        <div class="succ-card" id="succCard"></div>
-        <button class="sf-submit" onclick="resetSignupForm()" style="margin-top:4px">Register another donor</button>
-        <button onclick="showPage('home')" style="margin-top:14px;background:none;border:1.5px solid var(--red-mid);border-radius:50px;padding:10px 24px;font-family:var(--font-body);font-weight:700;font-size:.9rem;color:var(--gray);cursor:pointer;width:100%">← Back to Home</button>
+  <div class="demo-team-body">
+    <div class="demo-team-toolbar">
+      <div>
+        <h1 style="font-family:var(--font-head);font-size:1.8rem">Team &amp; <em style="font-style:italic;color:var(--red)">roles</em></h1>
+        <p style="color:var(--gray);font-size:.88rem;margin-top:4px">Invite staff and control what they can see and do — sample team shown below.</p>
       </div>
+      <button class="btn-primary" style="padding:11px 22px;font-size:.86rem" onclick="openInviteModal()">+ Invite Member</button>
+    </div>
 
-      <!-- FORM STATE -->
-      <div id="signupFormInner">
-        <h2>Your <em>details</em></h2>
-        <p class="form-intro">All fields marked <span style="color:var(--red)">*</span> are required. Your phone number is used only to send donation reminders — never shared or sold.</p>
-
-        <div class="sf-section">Personal Information</div>
-        <div class="sf-grid">
-          <div class="sf-field half">
-            <label class="sf-label">Full Name <span class="req">*</span></label>
-            <input class="sf-input" type="text" id="sfName" placeholder="e.g. Rina Begum">
-          </div>
-          <div class="sf-field half">
-            <label class="sf-label">Date of Birth <span class="req">*</span></label>
-            <input class="sf-input" type="date" id="sfDob">
-            <span class="sf-hint">Must be 18–65 years old</span>
-          </div>
-        </div>
-        <div class="sf-grid">
-          <div class="sf-field half">
-            <label class="sf-label">Gender</label>
-            <select class="sf-input" id="sfGender">
-              <option value="">Prefer not to say</option>
-              <option>Male</option>
-              <option>Female</option>
-              <option>Other</option>
-            </select>
-          </div>
-          <div class="sf-field half">
-            <label class="sf-label">Weight (kg)</label>
-            <input class="sf-input" type="number" id="sfWeight" placeholder="e.g. 60" min="45" max="200">
-            <span class="sf-hint">Minimum 45 kg to donate</span>
-          </div>
-        </div>
-
-        <div class="sf-section">Blood Type <span style="color:var(--red)">*</span></div>
-        <div class="sf-blood-grid" id="sfBloodGrid">
-          <div class="sf-bt" onclick="selectBlood(this,'A+')">A+</div>
-          <div class="sf-bt" onclick="selectBlood(this,'A−')">A−</div>
-          <div class="sf-bt" onclick="selectBlood(this,'B+')">B+</div>
-          <div class="sf-bt" onclick="selectBlood(this,'B−')">B−</div>
-          <div class="sf-bt" onclick="selectBlood(this,'AB+')">AB+</div>
-          <div class="sf-bt" onclick="selectBlood(this,'AB−')">AB−</div>
-          <div class="sf-bt" onclick="selectBlood(this,'O+')">O+</div>
-          <div class="sf-bt" onclick="selectBlood(this,'O−')">O−</div>
-        </div>
-        <p class="sf-hint" style="margin-bottom:14px">Don't know your type? We'll test it at your first visit.</p>
-        <div class="sf-field">
-          <label class="sf-label">Last Donation Date (if any)</label>
-          <input class="sf-input" type="date" id="sfLastDonate">
-          <span class="sf-hint">Leave blank if this is your first time</span>
-        </div>
-
-        <div class="sf-section">Contact & Notifications <span style="color:var(--red)">*</span></div>
-        <div class="sf-field">
-          <label class="sf-label">Mobile Phone Number <span class="req">*</span></label>
-          <input class="sf-input" type="tel" id="sfPhone" placeholder="+880 171 234 5678" oninput="formatPhoneInput(this)">
-          <span class="sf-hint">Include country code — e.g. +880 for Bangladesh, +44 for UK, +1 for US</span>
-        </div>
-        <div class="sf-field">
-          <label class="sf-label">WhatsApp Number</label>
-          <input class="sf-input" type="tel" id="sfWA" placeholder="Same as phone, or different">
-          <span class="sf-hint">Leave blank to use same number as above</span>
-        </div>
-        <div class="sf-grid">
-          <div class="sf-field half">
-            <label class="sf-label">Email Address</label>
-            <input class="sf-input" type="email" id="sfEmail" placeholder="optional@email.com">
-          </div>
-          <div class="sf-field half">
-            <label class="sf-label">Country</label>
-            <input class="sf-input" type="text" id="sfCountry" placeholder="e.g. Bangladesh">
-          </div>
-        </div>
-        <div class="sf-grid">
-          <div class="sf-field half">
-            <label class="sf-label">City</label>
-            <input class="sf-input" type="text" id="sfCity" placeholder="e.g. Dhaka, Sylhet">
-          </div>
-          <div class="sf-field half">
-            <label class="sf-label">Area / Address</label>
-            <input class="sf-input" type="text" id="sfArea" placeholder="e.g. Mirpur, House 12 Road 3">
-          </div>
-        </div>
-        <div class="sf-grid">
-          <div class="sf-field half">
-            <label class="sf-label">Preferred Language</label>
-            <select class="sf-input" id="sfLang">
-              <option value="">Select language</option>
-              <option>Bengali</option>
-              <option>English</option>
-              <option>Hindi</option>
-              <option>Urdu</option>
-              <option>Arabic</option>
-              <option>Spanish</option>
-              <option>French</option>
-              <option>Other</option>
-            </select>
-            <span class="sf-hint">So reminders reach you in a language you understand</span>
-          </div>
-        </div>
-
-        <div class="sf-section">🆘 Emergency Contact (Optional)</div>
-        <div class="sf-grid">
-          <div class="sf-field half">
-            <label class="sf-label">Contact Name</label>
-            <input class="sf-input" type="text" id="sfEmergName" placeholder="e.g. Karim Uddin">
-          </div>
-          <div class="sf-field half">
-            <label class="sf-label">Contact Phone</label>
-            <input class="sf-input" type="tel" id="sfEmergPhone" placeholder="+880 171 234 5678">
-          </div>
-        </div>
-        <span class="sf-hint" style="display:block;margin:-10px 0 14px">Reached only if we can't get through to you directly</span>
-
-        <div class="sf-section">📱 Social Media (Optional)</div>
-        <div class="sf-grid">
-          <div class="sf-field half">
-            <label class="sf-label">Facebook</label>
-            <input class="sf-input" type="text" id="sfFB" placeholder="username">
-          </div>
-          <div class="sf-field half">
-            <label class="sf-label">Telegram</label>
-            <input class="sf-input" type="text" id="sfTG" placeholder="@username">
-          </div>
-        </div>
-        <div class="sf-grid" style="margin-top:14px">
-          <div class="sf-field half">
-            <label class="sf-label">Instagram</label>
-            <input class="sf-input" type="text" id="sfIG" placeholder="@handle">
-          </div>
-        </div>
-
-        <div class="sf-section">Notification Preferences</div>
-        <div style="display:flex;flex-direction:column;gap:8px;margin-bottom:16px" id="sfNotifPrefs">
-          <label style="display:flex;align-items:center;gap:10px;font-size:.88rem;cursor:pointer"><input type="checkbox" id="nPrefSMS" checked style="width:16px;height:16px;accent-color:var(--red)"> SMS reminder when 90 days complete</label>
-          <label style="display:flex;align-items:center;gap:10px;font-size:.88rem;cursor:pointer"><input type="checkbox" id="nPrefWA" checked style="width:16px;height:16px;accent-color:var(--red)"> WhatsApp reminder when 90 days complete</label>
-          <label style="display:flex;align-items:center;gap:10px;font-size:.88rem;cursor:pointer"><input type="checkbox" id="nPrefEmerg" checked style="width:16px;height:16px;accent-color:var(--red)"> Emergency blood requests matching my type</label>
-        </div>
-
-        <div class="sf-consent">
-          <input type="checkbox" id="sfConsent">
-          <label for="sfConsent">I confirm I am <strong>18–65 years old</strong>, weigh at least <strong>45 kg</strong>, and am in good health. I agree to receive SMS/WhatsApp notifications from <span class="org-shortname">HopeAlert</span>. I understand I can reply STOP at any time to unsubscribe. <a onclick="showPage('privacy')">Privacy policy</a></label>
-        </div>
-
-        <button class="sf-submit" id="sfSubmitBtn" onclick="submitSignup()">
-          <span>❤️</span> Register as a Donor
-        </button>
+    <div class="demo-team-list">
+      <div class="demo-team-row">
+        <div class="demo-team-avatar" style="background:#E8294A">NJ</div>
+        <div class="demo-team-info"><div class="demo-team-name">Nusrath Jahan Sukhy</div><div class="demo-team-email">nusrath@sukhylab.com</div></div>
+        <span class="demo-role-badge role-owner">Owner</span>
+      </div>
+      <div class="demo-team-row">
+        <div class="demo-team-avatar" style="background:#185FA5">RB</div>
+        <div class="demo-team-info"><div class="demo-team-name">Rina Begum</div><div class="demo-team-email">rina@sunamganjbloodbank.org</div></div>
+        <span class="demo-role-badge role-admin">Admin</span>
+      </div>
+      <div class="demo-team-row">
+        <div class="demo-team-avatar" style="background:#1D9E75">KU</div>
+        <div class="demo-team-info"><div class="demo-team-name">Karim Uddin</div><div class="demo-team-email">karim@sunamganjbloodbank.org</div></div>
+        <span class="demo-role-badge role-staff">Staff</span>
+      </div>
+      <div class="demo-team-row">
+        <div class="demo-team-avatar" style="background:#6B5B5F">MS</div>
+        <div class="demo-team-info"><div class="demo-team-name">Dr. Mahmuda Sultana</div><div class="demo-team-email">mahmuda@sunamganjbloodbank.org</div></div>
+        <span class="demo-role-badge role-viewer">Viewer</span>
       </div>
     </div>
 
-    <!-- INFO SIDEBAR -->
-    <div class="signup-info">
-      <div class="info-card">
-        <h3>📲 How notifications work</h3>
-        <p>Once registered, our system tracks your 90-day donation cycle automatically. When you reach day 90, you get a direct SMS and WhatsApp message on your phone — no app needed.</p>
-        <div class="process-steps">
-          <div class="ps"><div class="ps-num">1</div><div class="ps-text">You register with your phone number today</div></div>
-          <div class="ps"><div class="ps-num">2</div><div class="ps-text">We track your 90-day countdown from your last donation</div></div>
-          <div class="ps"><div class="ps-num">3</div><div class="ps-text">On day 90 at 9 AM — SMS + WhatsApp arrives on your phone</div></div>
-          <div class="ps"><div class="ps-num">4</div><div class="ps-text">If there's an emergency matching your blood type, you're alerted instantly</div></div>
-        </div>
-      </div>
-
-      <div class="info-card">
-        <h3>✅ Eligibility checklist</h3>
-        <p>Make sure you meet these criteria before donating:</p>
-        <ul class="eligibility-list">
-          <li><span class="chk">✔</span> Age 18–65 years old</li>
-          <li><span class="chk">✔</span> Weight at least 45 kg</li>
-          <li><span class="chk">✔</span> Generally in good health</li>
-          <li><span class="chk">✔</span> Haemoglobin ≥ 12.5 g/dL (women) / 13 g/dL (men)</li>
-          <li><span class="chk">✔</span> At least 90 days since last donation</li>
-          <li><span class="x">✖</span> Not pregnant or recently gave birth</li>
-          <li><span class="x">✖</span> No recent tattoo or piercing (within 6 months)</li>
-          <li><span class="x">✖</span> Not on blood-thinning medication</li>
-        </ul>
-      </div>
-
-      <div class="info-card">
-        <h3>🌍 Your impact</h3>
-        <p>Donors who register and donate regularly make a massive difference over time.</p>
-        <div class="impact-numbers">
-          <div class="impact-n"><span class="n">3</span><span class="l">lives saved per donation</span></div>
-          <div class="impact-n"><span class="n">4×</span><span class="l">donations per year max</span></div>
-          <div class="impact-n"><span class="n">12</span><span class="l">lives saved per year</span></div>
-        </div>
-      </div>
-
-      <div class="info-card" style="background:var(--dark);border-color:rgba(255,255,255,.1)">
-        <h3 style="color:white">📞 Questions?</h3>
-        <p style="color:rgba(255,255,255,.6)">Our team is available Mon–Sat, 8am–6pm to help with registration or any questions about donating.</p>
-        <div style="margin-top:14px;display:flex;flex-direction:column;gap:8px">
-          <a id="signupPhoneLink" href="tel:+18005433448" style="color:var(--red-light);font-weight:700;text-decoration:none;font-size:.9rem">📞 <span class="org-phone">+1 800-HOPEALERT</span></a>
-          <a id="signupEmailLink" href="mailto:info@hopealert.org" style="color:var(--red-light);font-weight:700;text-decoration:none;font-size:.9rem">✉️ <span class="org-email">info@hopealert.org</span></a>
-        </div>
+    <div class="demo-panel" style="margin-top:24px">
+      <h3>What each role can do</h3>
+      <div class="demo-org-card">
+        <div class="row"><span>Owner</span><strong>Full control — billing, branding, delete org</strong></div>
+        <div class="row"><span>Admin</span><strong>Manage donors, requests &amp; invite staff</strong></div>
+        <div class="row"><span>Staff</span><strong>Add/edit donors &amp; respond to requests</strong></div>
+        <div class="row"><span>Viewer</span><strong>Read-only dashboard access</strong></div>
       </div>
     </div>
   </div>
 
   <footer>
-    <div><div class="footer-logo org-logo-full"><em>Hope</em>Alert Blood Bank</div><p>Register today — your phone gets a reminder the moment you're eligible to donate again.</p>
+    <div><div class="footer-logo org-logo-full"><em>Hope</em>Alert Blood Bank</div><p>A free donor management and emergency response system for blood banks, hospitals, and humanitarian organizations.</p></div>
+    <div><h4>Navigation</h4><ul><li><a onclick="showPage('home')">← Back to Home</a></li><li><a onclick="showPage('demo')">📊 Dashboard</a></li></ul></div>
+    <div><h4>Contact</h4><ul><li><a href="#">✉️ <span class="org-email">info@hopealert.org</span></a></li></ul></div>
+    <div></div>
+    <div class="footer-bottom">© 2026 <span class="org-fullname">HopeAlert Blood Bank</span>. All rights reserved. ❤️</div>
+  </footer>
+</div>
+
+<!-- INVITE MEMBER MODAL (demo only) -->
+<div class="modal-wrap" id="inviteModal">
+  <div class="modal-box">
+    <h3>Invite a team member</h3>
+    <p style="font-size:.85rem;color:var(--gray);margin-bottom:18px">This is a demo — no invite is actually sent.</p>
+    <div class="sf-field">
+      <label class="sf-label">Email Address</label>
+      <input class="sf-input" type="email" id="inviteEmail" placeholder="teammate@yourorg.org">
+    </div>
+    <div class="sf-field">
+      <label class="sf-label">Role</label>
+      <select class="sf-input" id="inviteRole">
+        <option>Admin</option>
+        <option selected>Staff</option>
+        <option>Viewer</option>
+      </select>
+    </div>
+    <div style="display:flex;gap:10px;margin-top:20px">
+      <button class="modal-cancel" onclick="closeInviteModal()">Cancel</button>
+      <button class="modal-save" onclick="sendDemoInvite()">Send Invite</button>
+    </div>
+  </div>
+</div>
+
+
+<!-- PAGE: DEMO SETTINGS -->
+<div id="page-demo-settings" class="page demo-hub-page">
+  <div class="demo-subnav">
+    <div class="demo-subnav-inner">
+      <span class="demo-subnav-org">🩺 Sunamganj Blood Bank <span class="demo-subnav-tag">DEMO</span></span>
+      <div class="demo-subnav-tabs">
+        <a data-dtab="dashboard" onclick="showPage('demo')">📊 Dashboard</a>
+        <a data-dtab="tracker" onclick="showPage('tracker')">🩸 Donors</a>
+        <a data-dtab="emergency" onclick="showPage('emergency')">🚨 Emergency</a>
+        <a data-dtab="team" onclick="showPage('demo-team')">👥 Team</a>
+        <a data-dtab="settings" onclick="showPage('demo-settings')">⚙️ Settings</a>
+      </div>
+      <a class="demo-subnav-exit" onclick="showPage('home')">Exit Demo ✕</a>
+    </div>
+  </div>
+
+  <div class="demo-settings-body">
+    <h1 style="font-family:var(--font-head);font-size:1.8rem;margin-bottom:4px">Organization <em style="font-style:italic;color:var(--red)">settings</em></h1>
+    <p style="color:var(--gray);font-size:.88rem;margin-bottom:24px">Profile, branding, and workspace address — sample values shown, editable here but not saved in this demo.</p>
+
+    <div class="demo-settings-card">
+      <div class="sf-section" style="margin-top:0;padding-top:0;border-top:none">Organization Profile</div>
+      <div class="sf-field">
+        <label class="sf-label">Organization Name</label>
+        <input class="sf-input" type="text" value="Sunamganj Blood Bank">
+      </div>
+      <div class="sf-grid">
+        <div class="sf-field half">
+          <label class="sf-label">Type</label>
+          <select class="sf-input"><option>Blood Bank</option></select>
+        </div>
+        <div class="sf-field half">
+          <label class="sf-label">Country</label>
+          <input class="sf-input" type="text" value="Bangladesh">
+        </div>
+      </div>
+
+      <div class="sf-section">Branding</div>
+      <div class="sf-field">
+        <label class="sf-label">Brand Color</label>
+        <div class="oa-swatches">
+          <div class="oa-swatch selected" style="background:#E8294A"></div>
+          <div class="oa-swatch" style="background:#185FA5"></div>
+          <div class="oa-swatch" style="background:#1D9E75"></div>
+          <div class="oa-swatch" style="background:#BA7517"></div>
+          <div class="oa-swatch" style="background:#534AB7"></div>
+        </div>
+        <span class="sf-hint">Used for buttons and accents in your workspace — emergency colors stay locked red</span>
+      </div>
+
+      <div class="sf-section">Workspace Address</div>
+      <div class="sf-field">
+        <div class="oa-subdomain-wrap">
+          <input type="text" value="sunamganj">
+          <span class="oa-subdomain-suffix">.hopealert.org</span>
+        </div>
+      </div>
+
+      <button class="sf-submit" style="margin-top:8px" onclick="showToast('This is a demo — changes aren\'t saved')">Save Changes</button>
+    </div>
+  </div>
+
+  <footer>
+    <div><div class="footer-logo org-logo-full"><em>Hope</em>Alert Blood Bank</div><p>A free donor management and emergency response system for blood banks, hospitals, and humanitarian organizations.</p></div>
+    <div><h4>Navigation</h4><ul><li><a onclick="showPage('home')">← Back to Home</a></li><li><a onclick="showPage('demo')">📊 Dashboard</a></li></ul></div>
+    <div><h4>Contact</h4><ul><li><a href="#">✉️ <span class="org-email">info@hopealert.org</span></a></li></ul></div>
+    <div></div>
+    <div class="footer-bottom">© 2026 <span class="org-fullname">HopeAlert Blood Bank</span>. All rights reserved. ❤️</div>
+  </footer>
+</div>
+
+
+<!-- PAGE: ORGANIZATION APPLICATION -->
+<div id="page-org-apply" class="page org-apply-page">
+  <div class="oa-hero">
+    <div class="oa-hero-badge">🏥 For blood banks, hospitals &amp; NGOs</div>
+    <h1>Bring <em class="org-shortname">HopeAlert</em><br>to your organization</h1>
+    <p>Get a free, private workspace with your own donor database, staff logins, and emergency board. Most applications are reviewed within 48 hours.</p>
+  </div>
+
+  <div class="oa-steps" id="oaSteps">
+    <div class="oa-step active" data-step="1"><div class="oa-step-dot">1</div><div class="oa-step-label">Organization</div></div>
+    <div class="oa-step" data-step="2"><div class="oa-step-dot">2</div><div class="oa-step-label">Contact</div></div>
+    <div class="oa-step" data-step="3"><div class="oa-step-dot">3</div><div class="oa-step-label">Workspace</div></div>
+    <div class="oa-step" data-step="4"><div class="oa-step-dot">4</div><div class="oa-step-label">Review</div></div>
+  </div>
+
+  <div class="oa-body">
+    <div class="oa-card" id="oaCard">
+
+      <!-- SUCCESS STATE -->
+      <div class="oa-success" id="oaSuccess">
+        <div class="succ-icon">🎉</div>
+        <h3>Application received!</h3>
+        <p>Thanks for applying to bring <span class="org-shortname">HopeAlert</span> to your organization. We review every application by hand to keep donor data safe — you'll hear back at the email you provided, usually within 48 hours.</p>
+        <div class="oa-ref-card" id="oaRefCard"></div>
+        <button class="sf-submit" onclick="showPage('home')" style="margin-top:4px">← Back to Home</button>
+      </div>
+
+      <!-- FORM STATE -->
+      <div id="oaFormInner">
+
+        <!-- STEP 1: ORGANIZATION -->
+        <div class="oa-panel active" data-panel="1">
+          <h2>Your <em>organization</em></h2>
+          <p class="oa-intro">Tell us who you are. This becomes the name on your private HopeAlert workspace.</p>
+          <div class="sf-field">
+            <label class="sf-label">Organization Name <span class="req">*</span></label>
+            <input class="sf-input" type="text" id="oaOrgName" placeholder="e.g. Sunamganj Blood Bank">
+          </div>
+          <div class="sf-field">
+            <label class="sf-label">Organization Type <span class="req">*</span></label>
+            <select class="sf-input" id="oaOrgType">
+              <option value="">Select type</option>
+              <option>Blood Bank</option>
+              <option>Hospital</option>
+              <option>Clinic</option>
+              <option>NGO / Nonprofit</option>
+              <option>Other</option>
+            </select>
+          </div>
+          <div class="sf-grid">
+            <div class="sf-field half">
+              <label class="sf-label">Country <span class="req">*</span></label>
+              <input class="sf-input" type="text" id="oaCountry" placeholder="e.g. Bangladesh">
+            </div>
+            <div class="sf-field half">
+              <label class="sf-label">City</label>
+              <input class="sf-input" type="text" id="oaCity" placeholder="e.g. Sunamganj">
+            </div>
+          </div>
+          <div class="oa-nav">
+            <button class="oa-btn-next" style="flex:1" onclick="oaNext(1)">Continue →</button>
+          </div>
+        </div>
+
+        <!-- STEP 2: CONTACT -->
+        <div class="oa-panel" data-panel="2">
+          <h2>Contact <em>person</em></h2>
+          <p class="oa-intro">Who should we reach about this application, and who becomes the first admin of the workspace?</p>
+          <div class="sf-field">
+            <label class="sf-label">Full Name <span class="req">*</span></label>
+            <input class="sf-input" type="text" id="oaContactName" placeholder="e.g. Nusrath Jahan Sukhy">
+          </div>
+          <div class="sf-field">
+            <label class="sf-label">Role / Title</label>
+            <input class="sf-input" type="text" id="oaContactRole" placeholder="e.g. Director, Coordinator">
+          </div>
+          <div class="sf-grid">
+            <div class="sf-field half">
+              <label class="sf-label">Email Address <span class="req">*</span></label>
+              <input class="sf-input" type="email" id="oaContactEmail" placeholder="you@organization.org">
+              <span class="sf-hint">This becomes your admin login</span>
+            </div>
+            <div class="sf-field half">
+              <label class="sf-label">Phone Number <span class="req">*</span></label>
+              <input class="sf-input" type="tel" id="oaContactPhone" placeholder="+880 171 234 5678">
+            </div>
+          </div>
+          <div class="oa-nav">
+            <button class="oa-btn-back" onclick="oaBack(2)">← Back</button>
+            <button class="oa-btn-next" onclick="oaNext(2)">Continue →</button>
+          </div>
+        </div>
+
+        <!-- STEP 3: WORKSPACE -->
+        <div class="oa-panel" data-panel="3">
+          <h2>Your <em>workspace</em></h2>
+          <p class="oa-intro">A few basics for your private, branded space. You can change these later.</p>
+          <div class="sf-field">
+            <label class="sf-label">Workspace Address <span class="req">*</span></label>
+            <div class="oa-subdomain-wrap">
+              <input type="text" id="oaSubdomain" placeholder="yourorg" oninput="oaCleanSubdomain(this)">
+              <span class="oa-subdomain-suffix">.hopealert.org</span>
+            </div>
+            <span class="sf-hint">Lowercase letters, numbers, and hyphens only</span>
+          </div>
+          <div class="sf-field">
+            <label class="sf-label">Brand Color</label>
+            <div class="oa-swatches" id="oaSwatches">
+              <div class="oa-swatch selected" style="background:#E8294A" onclick="oaPickColor(this,'#E8294A')"></div>
+              <div class="oa-swatch" style="background:#185FA5" onclick="oaPickColor(this,'#185FA5')"></div>
+              <div class="oa-swatch" style="background:#1D9E75" onclick="oaPickColor(this,'#1D9E75')"></div>
+              <div class="oa-swatch" style="background:#BA7517" onclick="oaPickColor(this,'#BA7517')"></div>
+              <div class="oa-swatch" style="background:#534AB7" onclick="oaPickColor(this,'#534AB7')"></div>
+            </div>
+            <span class="sf-hint">Used for your workspace's buttons and accents — emergency alert colors always stay red</span>
+          </div>
+          <div class="sf-field">
+            <label class="sf-label">Approximate Donor Network Size</label>
+            <select class="sf-input" id="oaOrgSize">
+              <option value="">Select a range (optional)</option>
+              <option>Under 100</option>
+              <option>100–1,000</option>
+              <option>1,000–10,000</option>
+              <option>10,000+</option>
+            </select>
+          </div>
+          <div class="oa-nav">
+            <button class="oa-btn-back" onclick="oaBack(3)">← Back</button>
+            <button class="oa-btn-next" onclick="oaNext(3)">Continue →</button>
+          </div>
+        </div>
+
+        <!-- STEP 4: REVIEW -->
+        <div class="oa-panel" data-panel="4">
+          <h2>Review &amp; <em>submit</em></h2>
+          <p class="oa-intro">Check your details before submitting. Every application is reviewed before the workspace goes live.</p>
+          <div id="oaReviewList"></div>
+          <div class="sf-consent" style="margin-top:18px">
+            <input type="checkbox" id="oaConsent">
+            <label for="oaConsent">I confirm this information is accurate and I'm authorized to register this organization on <span class="org-shortname">HopeAlert</span>. I understand my organization's donor data will remain private and separate from every other organization. <a onclick="showPage('privacy')">Privacy policy</a></label>
+          </div>
+          <div class="oa-nav">
+            <button class="oa-btn-back" onclick="oaBack(4)">← Back</button>
+            <button class="oa-btn-next" id="oaSubmitBtn" onclick="submitOrgApplication()">Submit Application</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <div><div class="footer-logo org-logo-full"><em>Hope</em>Alert Blood Bank</div><p>A free donor management and emergency response system for blood banks, hospitals, and humanitarian organizations.</p>
     <div class="footer-social"><a class="social-btn" href="#">f</a><a class="social-btn" href="#">in</a><a class="social-btn" href="#">𝕏</a><a class="social-btn" href="#">▶</a></div></div>
-    <div><h4>Navigation</h4><ul><li><a onclick="showPage('home')">← Back to Home</a></li><li><a onclick="showPage('emergency')">🚨 Emergency</a></li><li><a onclick="showPage('tracker')">🩸 Donor Tracker</a></li></ul></div>
-    <div><h4>Information</h4><ul><li><a href="#">Eligibility</a></li><li><a href="#">Blood Types</a></li><li><a onclick="showPage('privacy')">Privacy Policy</a></li><li><a href="#">FAQs</a></li></ul></div>
-    <div><h4>Contact Us</h4><ul><li><a href="#">📍 <span class="org-address">123 Health Street</span></a></li><li><a href="#">📞 <span class="org-phone">+1 800-HOPEALERT</span></a></li><li><a href="#">✉️ <span class="org-email">info@hopealert.org</span></a></li><li><a href="#">🕐 Mon–Sat, 8am–6pm</a></li></ul></div>
+    <div><h4>Navigation</h4><ul><li><a onclick="showPage('home')">← Back to Home</a></li><li><a onclick="showPage('about')">About Us</a></li></ul></div>
+    <div><h4>Information</h4><ul><li><a onclick="showPage('privacy')">Privacy Policy</a></li></ul></div>
     <div class="footer-bottom">© 2026 <span class="org-fullname">HopeAlert Blood Bank</span>. All rights reserved. ❤️</div>
   </footer>
 </div>
@@ -1366,8 +1689,8 @@ footer{border-top:1px solid rgba(232,41,74,.18)}
 
   <div class="about-hero">
     <div class="about-hero-tag">🏛️ Our Story</div>
-    <h1>The people behind<br><em class="org-shortname">HopeAlert</em></h1>
-    <p>Founded in 1988 by a group of doctors and philanthropists who believed every life is worth saving — meet the team and the generous supporters who make it possible.</p>
+    <h1>Built for organizations,<br>by <em class="org-shortname">HopeAlert</em></h1>
+    <p>HopeAlert is a free system built for blood banks, hospitals, and NGOs that need a simple way to manage their donors and handle emergency blood requests. Founded in 1988, here's the team and supporters behind it.</p>
   </div>
 
   <!-- TABS -->
@@ -1380,13 +1703,13 @@ footer{border-top:1px solid rgba(232,41,74,.18)}
   <!-- TAB: MISSION -->
   <div class="about-section active" id="atab-mission">
     <div class="about-sec-tag">Who we are</div>
-    <h2 class="about-sec-h">Saving lives since <em>1988</em></h2>
-    <p class="about-sec-sub">HopeAlert was born from a single belief: that no one should die for lack of blood. Today we operate in 30+ countries and have saved over 120,000 lives.</p>
+    <h2 class="about-sec-h">A platform for organizations, since <em>1988</em></h2>
+    <p class="about-sec-sub">HopeAlert is built for blood banks, hospitals, and NGOs that need a simple system to manage donors and handle emergency blood requests. Today, 54 organizations across 30+ countries run their donor network on HopeAlert.</p>
 
     <div class="mission-grid">
-      <div class="mission-card"><div class="mission-icon">🩸</div><h3>Our Mission</h3><p>To make safe blood available to every person who needs it, regardless of location, wealth, or circumstance.</p></div>
-      <div class="mission-card"><div class="mission-icon">🌍</div><h3>Our Vision</h3><p>A world where no patient dies waiting for blood — where every eligible donor is connected to someone in need.</p></div>
-      <div class="mission-card"><div class="mission-icon">🤝</div><h3>Our Values</h3><p>Compassion, transparency, community. Every donor, every volunteer, every dollar is treated with deep gratitude.</p></div>
+      <div class="mission-card"><div class="mission-icon">🩸</div><h3>Our Mission</h3><p>To give every blood bank, hospital, and NGO the tools to manage donors and respond to emergencies, free of cost.</p></div>
+      <div class="mission-card"><div class="mission-icon">🌍</div><h3>Our Vision</h3><p>A world where every organization, regardless of size or budget, can coordinate its donors as effectively as the largest hospital network.</p></div>
+      <div class="mission-card"><div class="mission-icon">🔒</div><h3>Our Approach</h3><p>Each organization gets its own private, isolated donor data — HopeAlert never shares or pools it across organizations without consent.</p></div>
     </div>
 
     <div class="about-sec-tag">Our journey</div>
@@ -1405,108 +1728,32 @@ footer{border-top:1px solid rgba(232,41,74,.18)}
 
   <!-- TAB: FOUNDERS -->
   <div class="about-section" id="atab-founders">
-    <div class="about-sec-tag">The team</div>
-    <h2 class="about-sec-h">Founders &amp; <em>leadership</em></h2>
-    <p class="about-sec-sub">Meet the visionaries who started HopeAlert and the dedicated leaders who carry the mission forward every day.</p>
+    <div class="about-sec-tag">The founder</div>
+    <h2 class="about-sec-h">Built solo, by <em>one developer</em></h2>
+    <p class="about-sec-sub">HopeAlert isn't run by a large team or a decades-old NGO. It's built and maintained by one self-taught developer who believes life-saving software shouldn't depend on a budget.</p>
 
     <div class="founders-grid">
 
-      <!-- FEATURED FOUNDER -->
+      <!-- FOUNDER -->
       <div class="founder-card featured">
         <div class="founder-avatar-wrap">
-          <div class="founder-avatar" style="background:linear-gradient(135deg,var(--red-soft),#FFD0D8)">AH</div>
-          <div class="founder-role-badge">Co-Founder &amp; Chairman</div>
+          <div class="founder-avatar" style="background:linear-gradient(135deg,var(--red-soft),#FFD0D8)">NJS</div>
+          <div class="founder-role-badge">Founder &amp; Developer</div>
         </div>
         <div class="founder-body">
-          <div class="founder-name">Dr. Amir Hassan</div>
-          <div class="founder-title">Co-Founder &amp; Chairman Emeritus</div>
-          <div class="founder-quote">"I watched a mother die because there was no blood available. I swore that day it would never happen again if I could help it."</div>
-          <div class="founder-bio">Dr. Amir Hassan is the founding visionary of HopeAlert. A haematologist trained at the University of Dhaka and Johns Hopkins, he co-founded HopeAlert in 1988 after witnessing the devastating shortage of safe blood in Bangladesh. Over 35 years, he has personally overseen operations in 30+ countries and raised over $40 million in funding for blood banking infrastructure.</div>
+          <div class="founder-name">Nusrath Jahan Sukhy</div>
+          <div class="founder-title">Founder &amp; Developer, HopeAlert</div>
+          <div class="founder-quote">"I didn't want to build another tool that only well-funded hospitals could afford. If a small NGO here in Sunamganj can't use it for free, I haven't built the right thing."</div>
+          <div class="founder-bio">Nusrath is a self-taught web developer based in Sunamganj, Bangladesh. She built HopeAlert single-handedly — donor registration, 90-day cycle tracking, WhatsApp/SMS alerts, and the emergency board — driven by the belief that technology should serve communities regardless of budget. Alongside HopeAlert, she runs SukhyLab, a small web development studio, teaches English to students every day, and founded Pitha City, a Bengali food brand rooted in her community.</div>
           <div class="founder-stats">
-            <div class="founder-stat"><span class="fsn">35+</span><span class="fsl">Years leading HopeAlert</span></div>
-            <div class="founder-stat"><span class="fsn">30+</span><span class="fsl">Countries reached</span></div>
-            <div class="founder-stat"><span class="fsn">$40M</span><span class="fsl">Funds raised</span></div>
+            <div class="founder-stat"><span class="fsn">SukhyLab</span><span class="fsl">Web dev studio, founded</span></div>
+            <div class="founder-stat"><span class="fsn">Pitha City</span><span class="fsl">Bengali food brand, founded</span></div>
+            <div class="founder-stat"><span class="fsn">Daily</span><span class="fsl">English classes taught</span></div>
           </div>
           <div class="founder-socials">
-            <a class="f-soc" href="#">in</a>
-            <a class="f-soc" href="#">𝕏</a>
-            <a class="f-soc" href="#">✉</a>
+            <a class="f-soc" href="https://linkedin.com/in/nusrathjahansukhy" target="_blank" rel="noopener">in</a>
+            <a class="f-soc" href="mailto:nusrath@sukhylab.com">✉</a>
           </div>
-        </div>
-      </div>
-
-      <!-- CO-FOUNDERS -->
-      <div class="founder-card">
-        <div class="founder-avatar-wrap">
-          <div class="founder-avatar" style="background:linear-gradient(135deg,#E1F5EE,#9FE1CB);min-height:180px">FI</div>
-          <div class="founder-role-badge" style="background:var(--green)">Co-Founder</div>
-        </div>
-        <div class="founder-body">
-          <div class="founder-name">Dr. Fatima Islam</div>
-          <div class="founder-title">Co-Founder &amp; Medical Director</div>
-          <div class="founder-bio">Trained surgeon and blood safety advocate. Dr. Islam designed HopeAlert's donor screening protocols, now used as a standard across South Asia. She has trained over 2,000 medical professionals in safe blood handling.</div>
-          <div class="founder-stats">
-            <div class="founder-stat"><span class="fsn">2,000+</span><span class="fsl">Doctors trained</span></div>
-            <div class="founder-stat"><span class="fsn">18</span><span class="fsl">Protocols authored</span></div>
-          </div>
-          <div class="founder-socials"><a class="f-soc" href="#">in</a><a class="f-soc" href="#">✉</a></div>
-        </div>
-      </div>
-
-      <div class="founder-card">
-        <div class="founder-avatar-wrap">
-          <div class="founder-avatar" style="background:linear-gradient(135deg,#EEEDFE,#AFA9EC);min-height:180px">RK</div>
-          <div class="founder-role-badge" style="background:#534AB7">Co-Founder</div>
-        </div>
-        <div class="founder-body">
-          <div class="founder-name">Rafiq Karim</div>
-          <div class="founder-title">Co-Founder &amp; CEO</div>
-          <div class="founder-bio">Business strategist and humanitarian. Rafiq turned HopeAlert from a local blood drive into an internationally recognised NGO. He secured the first international partnerships with the Red Cross and WHO, and oversees all operational strategy today.</div>
-          <div class="founder-stats">
-            <div class="founder-stat"><span class="fsn">54</span><span class="fsl">Hospital partners</span></div>
-            <div class="founder-stat"><span class="fsn">12</span><span class="fsl">UN partnerships</span></div>
-          </div>
-          <div class="founder-socials"><a class="f-soc" href="#">in</a><a class="f-soc" href="#">𝕏</a></div>
-        </div>
-      </div>
-
-      <!-- LEADERSHIP TEAM -->
-      <div class="founder-card">
-        <div class="founder-avatar-wrap">
-          <div class="founder-avatar" style="background:linear-gradient(135deg,#FAEEDA,#FAC775);min-height:160px">NA</div>
-          <div class="founder-role-badge" style="background:var(--amber)">Leadership</div>
-        </div>
-        <div class="founder-body">
-          <div class="founder-name">Dr. Nadia Ahmed</div>
-          <div class="founder-title">Head of Operations</div>
-          <div class="founder-bio">Leads day-to-day operations across all 30 countries. Former WHO field coordinator with 15 years of humanitarian logistics experience. Joined HopeAlert in 2012.</div>
-          <div class="founder-socials"><a class="f-soc" href="#">in</a><a class="f-soc" href="#">✉</a></div>
-        </div>
-      </div>
-
-      <div class="founder-card">
-        <div class="founder-avatar-wrap">
-          <div class="founder-avatar" style="background:linear-gradient(135deg,#E6F1FB,#85B7EB);min-height:160px">JL</div>
-          <div class="founder-role-badge" style="background:var(--blue)">Leadership</div>
-        </div>
-        <div class="founder-body">
-          <div class="founder-name">James Lin</div>
-          <div class="founder-title">Chief Technology Officer</div>
-          <div class="founder-bio">Built HopeAlert's donor tracking platform from scratch. Previously senior engineer at Google Health. Architected the SMS and WhatsApp notification system now reaching 98,000 donors.</div>
-          <div class="founder-socials"><a class="f-soc" href="#">in</a><a class="f-soc" href="#">𝕏</a></div>
-        </div>
-      </div>
-
-      <div class="founder-card">
-        <div class="founder-avatar-wrap">
-          <div class="founder-avatar" style="background:linear-gradient(135deg,var(--red-soft),#FFD0D8);min-height:160px">SC</div>
-          <div class="founder-role-badge">Leadership</div>
-        </div>
-        <div class="founder-body">
-          <div class="founder-name">Sara Chowdhury</div>
-          <div class="founder-title">Head of Donor Relations</div>
-          <div class="founder-bio">Grew the active donor base from 12,000 to 98,000 in five years through community outreach, corporate partnerships, and the self-registration programme launched in 2022.</div>
-          <div class="founder-socials"><a class="f-soc" href="#">in</a><a class="f-soc" href="#">✉</a></div>
         </div>
       </div>
 
@@ -1565,7 +1812,7 @@ footer{border-top:1px solid rgba(232,41,74,.18)}
   <footer>
     <div><div class="footer-logo org-logo-full"><em>Hope</em>Alert Blood Bank</div><p>Founded 1988. Operating in 30+ countries. Powered by donors and supporters like you.</p>
     <div class="footer-social"><a class="social-btn" href="#">f</a><a class="social-btn" href="#">in</a><a class="social-btn" href="#">𝕏</a><a class="social-btn" href="#">▶</a></div></div>
-    <div><h4>Navigation</h4><ul><li><a onclick="showPage('home')">← Home</a></li><li><a onclick="showPage('signup')">Become a Donor</a></li><li><a onclick="showPage('emergency')">🚨 Emergency</a></li></ul></div>
+    <div><h4>Navigation</h4><ul><li><a onclick="showPage('home')">← Home</a></li><li><a onclick="showPage('org-apply')">Apply for Your Organization</a></li></ul></div>
     <div><h4>About</h4><ul><li><a onclick="switchAboutTab('mission',null)">Mission</a></li><li><a onclick="switchAboutTab('founders',null)">Founders</a></li><li><a onclick="switchAboutTab('donors',null)">Financial Donors</a></li></ul></div>
     <div><h4>Contact</h4><ul><li><a href="#">📞 <span class="org-phone">+1 800-HOPEALERT</span></a></li><li><a href="#">✉️ <span class="org-email">info@hopealert.org</span></a></li></ul></div>
     <div class="footer-bottom">© 2026 <span class="org-fullname">HopeAlert Blood Bank</span>. All rights reserved. ❤️</div>
@@ -1784,7 +2031,7 @@ footer{border-top:1px solid rgba(232,41,74,.18)}
     </div>
     <div><h4>Navigation</h4><ul>
       <li><a onclick="showPage('home')">← Back to Home</a></li>
-      <li><a onclick="showPage('signup')">Become a Donor</a></li>
+      <li><a onclick="showPage('org-apply')">Apply for Your Organization</a></li>
       <li><a onclick="showPage('about')">About Us</a></li>
     </ul></div>
     <div><h4>Legal</h4><ul>
@@ -2129,6 +2376,14 @@ function showPage(p){
   if(p==='tracker')renderTracker();
   if(p==='emergency')renderRequests();
   if(p==='about')renderDonors();
+  if(p==='demo')renderDemoDashboard();
+
+  // demo workspace sub-nav active tab
+  const demoTabMap={demo:'dashboard',tracker:'tracker',emergency:'emergency','demo-team':'team','demo-settings':'settings'};
+  document.querySelectorAll('.demo-subnav-tabs a').forEach(a=>a.classList.remove('active'));
+  if(demoTabMap[p]){
+    document.querySelectorAll('.demo-subnav-tabs a[data-dtab="'+demoTabMap[p]+'"]').forEach(a=>a.classList.add('active'));
+  }
 }
 
 // FIX 1: renamed from scrollTo to goTo — no longer shadows window.scrollTo
@@ -2153,6 +2408,41 @@ function showToast(msg){
   t.textContent=msg;
   t.classList.add('show');
   setTimeout(()=>t.classList.remove('show'),3400);
+}
+
+// ════════════════════════════════════════════════════════════
+// DEMO DASHBOARD
+// ════════════════════════════════════════════════════════════
+function renderDemoDashboard(){
+  const row=document.getElementById('demoStatRow');
+  if(!row)return;
+  const readyN=donors.filter(d=>getStatus(d)==='ready').length;
+  const activeEmerg=emergencies.length;
+  row.innerHTML=
+    '<div class="demo-stat-card"><span class="n">'+donors.length+'</span><span class="l">Total Donors</span><span class="trend">Live from Donor Tracker</span></div>'+
+    '<div class="demo-stat-card"><span class="n">'+readyN+'</span><span class="l">Ready to Donate</span><span class="trend">Live from Donor Tracker</span></div>'+
+    '<div class="demo-stat-card"><span class="n">'+activeEmerg+'</span><span class="l">Active Emergency Requests</span><span class="trend" style="color:var(--red)">'+(activeEmerg?'Needs attention':'All clear')+'</span></div>'+
+    '<div class="demo-stat-card"><span class="n">4</span><span class="l">Team Members</span><span class="trend">1 Owner · 1 Admin · 1 Staff · 1 Viewer</span></div>';
+}
+
+// ════════════════════════════════════════════════════════════
+// DEMO TEAM — invite modal (sample data only, nothing is sent)
+// ════════════════════════════════════════════════════════════
+function openInviteModal(){document.getElementById('inviteModal').classList.add('open')}
+function closeInviteModal(){
+  document.getElementById('inviteModal').classList.remove('open');
+  document.getElementById('inviteEmail').value='';
+  document.getElementById('inviteRole').value='Staff';
+}
+function sendDemoInvite(){
+  const email=document.getElementById('inviteEmail').value.trim();
+  if(!email||!/^\S+@\S+\.\S+$/.test(email)){
+    showToast('Enter a valid email to continue');
+    return;
+  }
+  const role=document.getElementById('inviteRole').value;
+  showToast('Demo only — no invite sent to '+email+' ('+role+')');
+  closeInviteModal();
 }
 
 // ════════════════════════════════════════════════════════════
@@ -2733,6 +3023,122 @@ function resetSignupForm(){
   });
   document.getElementById('signupFormInner').style.display='block';
   document.getElementById('signupSuccess').style.display='none';
+}
+
+// ════════════════════════════════════════════════════════════
+// ORGANIZATION APPLICATION WIZARD
+// ════════════════════════════════════════════════════════════
+let oaCurrentStep=1;
+let oaSelectedColor='#E8294A';
+const orgApplications=[]; // in-memory demo store — replace with a real Supabase insert
+
+function oaGoToPanel(step){
+  document.querySelectorAll('.oa-panel').forEach(p=>p.classList.remove('active'));
+  const panel=document.querySelector('.oa-panel[data-panel="'+step+'"]');
+  if(panel)panel.classList.add('active');
+  document.querySelectorAll('.oa-step').forEach(s=>{
+    const n=parseInt(s.dataset.step);
+    s.classList.remove('active','done');
+    if(n<step)s.classList.add('done');
+    if(n===step)s.classList.add('active');
+  });
+  oaCurrentStep=step;
+  document.getElementById('oaCard').scrollIntoView({behavior:'smooth',block:'start'});
+}
+
+function oaValidateStep(step){
+  const req={
+    1:['oaOrgName','oaOrgType','oaCountry'],
+    2:['oaContactName','oaContactEmail','oaContactPhone'],
+    3:['oaSubdomain']
+  }[step]||[];
+  let ok=true;
+  req.forEach(id=>{
+    const el=document.getElementById(id);
+    if(!el)return;
+    const empty=!el.value||!el.value.trim();
+    el.style.borderColor=empty?'var(--red)':'var(--red-mid)';
+    if(empty)ok=false;
+  });
+  if(step===2){
+    const email=document.getElementById('oaContactEmail');
+    if(email.value&&!/^\S+@\S+\.\S+$/.test(email.value)){
+      email.style.borderColor='var(--red)';ok=false;
+    }
+  }
+  if(!ok)showToast('Please fill in all required fields');
+  return ok;
+}
+
+function oaNext(step){
+  if(!oaValidateStep(step))return;
+  if(step===3)oaBuildReview();
+  oaGoToPanel(step+1);
+}
+function oaBack(step){
+  oaGoToPanel(step-1);
+}
+
+function oaCleanSubdomain(el){
+  el.value=el.value.toLowerCase().replace(/[^a-z0-9-]/g,'');
+}
+
+function oaPickColor(el,hex){
+  document.querySelectorAll('.oa-swatch').forEach(s=>s.classList.remove('selected'));
+  el.classList.add('selected');
+  oaSelectedColor=hex;
+}
+
+function oaBuildReview(){
+  const type=document.getElementById('oaOrgType').value||'—';
+  const size=document.getElementById('oaOrgSize').value;
+  const rows=[
+    ['Organization',document.getElementById('oaOrgName').value],
+    ['Type',type],
+    ['Location',[document.getElementById('oaCity').value,document.getElementById('oaCountry').value].filter(Boolean).join(', ')||'—'],
+    ['Contact',document.getElementById('oaContactName').value+(document.getElementById('oaContactRole').value?' · '+document.getElementById('oaContactRole').value:'')],
+    ['Email',document.getElementById('oaContactEmail').value],
+    ['Phone',document.getElementById('oaContactPhone').value],
+    ['Workspace',(document.getElementById('oaSubdomain').value||'—')+'.hopealert.org'],
+    ['Donor network size',size||'Not specified']
+  ];
+  document.getElementById('oaReviewList').innerHTML=rows.map(r=>
+    '<div class="oa-review-row"><span>'+r[0]+'</span><strong>'+(r[1]||'—')+'</strong></div>'
+  ).join('');
+}
+
+function submitOrgApplication(){
+  if(!document.getElementById('oaConsent').checked){
+    showToast('Please confirm the checkbox to continue');
+    return;
+  }
+  const refId='HA-ORG-'+Math.random().toString(36).slice(2,7).toUpperCase();
+  const application={
+    refId,
+    orgName:document.getElementById('oaOrgName').value,
+    orgType:document.getElementById('oaOrgType').value,
+    country:document.getElementById('oaCountry').value,
+    city:document.getElementById('oaCity').value,
+    contactName:document.getElementById('oaContactName').value,
+    contactRole:document.getElementById('oaContactRole').value,
+    contactEmail:document.getElementById('oaContactEmail').value,
+    contactPhone:document.getElementById('oaContactPhone').value,
+    subdomain:document.getElementById('oaSubdomain').value,
+    brandColor:oaSelectedColor,
+    orgSize:document.getElementById('oaOrgSize').value,
+    status:'pending', // matches organizations.status default in the multi-tenant design
+    submittedAt:new Date().toISOString()
+  };
+  orgApplications.push(application);
+  // TODO: replace with a real submit — e.g. Supabase insert into `organizations` (status='pending')
+  // plus an `org_members` row for this contact as role='owner', per the auth design doc.
+
+  document.getElementById('oaRefCard').innerHTML=
+    '<div><span>Reference ID</span><strong>'+refId+'</strong></div>'+
+    '<div><span>Organization</span><strong>'+application.orgName+'</strong></div>'+
+    '<div><span>Status</span><strong>Pending review</strong></div>';
+  document.getElementById('oaFormInner').style.display='none';
+  document.getElementById('oaSuccess').style.display='block';
 }
 
 // ════════════════════════════════════════════════════════════
