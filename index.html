@@ -5637,7 +5637,7 @@
     <a onclick="showPage('home');goTo('#how');closeMenu()">📋 How It Works</a>
     <a id="mm-demo" onclick="showPage('demo');closeMenu()">👀 See Demo</a>
     <a id="mm-privacy" onclick="showPage('privacy');closeMenu()">🔒 Privacy Policy</a>
-    <a class="mm-emerg" id="mm-org-apply" onclick="showPage('org-apply');closeMenu()">🏥 Apply for Your Organization</a>
+    <a class="mm-emerg" id="mm-org-apply" href="org_signup.html">🏥 Apply for Your Organization</a>
   </div>
 
   <!-- PAGE: HOME -->
@@ -5650,7 +5650,9 @@
           private workspace — donor records, emergency requests, and staff logins kept separate from every other
           organization. Apply below to get yours.</p>
         <div class="hero-actions">
-          <button class="btn-primary" onclick="showPage('org-apply')">Apply for Your Organization</button>
+          <a class="btn-primary" id="hero-org-apply" href="org_signup.html">Apply for Your
+          Organization</a>
+                
           <span class="btn-secondary" onclick="showPage('home');goTo('#how')">How it works <span
               class="btn-arrow">→</span></span>
         </div>
@@ -5845,45 +5847,9 @@
       <h2>Ready to give your organization <em>its own workspace</em>?</h2>
       <p>HopeAlert is free for blood banks, hospitals, and NGOs. Apply today and most applications are reviewed within
         48 hours.</p>
-      <button class="btn-primary" onclick="showPage('org-apply')">Apply for Your Organization</button>
+      <a class="btn-primary" href="org_signup.html">Apply for Your Organization</a>
     </section>
-    <footer>
-      <div>
-        <div class="footer-logo org-logo-full"><em>Hope</em>Alert Blood Bank</div>
-        <p>A free donor management and emergency response system for blood banks, hospitals, and humanitarian
-          organizations.</p>
-        <div class="footer-social"><a class="social-btn" href="#">f</a><a class="social-btn" href="#">in</a><a
-            class="social-btn" href="#">𝕏</a><a class="social-btn" href="#">▶</a></div>
-      </div>
-      <div>
-        <h4>Quick Links</h4>
-        <ul>
-          <li><a onclick="showPage('org-apply')">Apply for Your Organization</a></li>
-          <li><a onclick="showPage('about')">About Us</a></li>
-          <li><a onclick="showPage('home');goTo('#why')">Why HopeAlert</a></li>
-          <li><a onclick="showPage('home');goTo('#how')">How It Works</a></li>
-        </ul>
-      </div>
-      <div>
-        <h4>Information</h4>
-        <ul>
-          <li><a href="#">Eligibility</a></li>
-          <li><a href="#">Blood Types</a></li>
-          <li><a onclick="showPage('privacy')">Privacy Policy</a></li>
-          <li><a href="#">FAQs</a></li>
-        </ul>
-      </div>
-      <div>
-        <h4>Contact Us</h4>
-        <ul>
-          <li><a href="#">📍 <span class="org-address">Sunamganj, Bangladesh</span></a></li>
-          <li><a href="#">✉️ <span class="org-email">info@hopealert.org</span></a></li>
-          <li><a href="#">🕐 Mon–Sat, 8am–6pm</a></li>
-        </ul>
-      </div>
-      <div class="footer-bottom">© 2026 <span class="org-fullname">HopeAlert Blood Bank</span>. All rights reserved. ❤️
-      </div>
-    </footer>
+
   </div>
 
   <!-- PAGE: DEMO DASHBOARD -->
@@ -5909,8 +5875,8 @@
           <p>This is a sample organization's dashboard — the workspace your own organization gets after applying.
             Nothing here is connected to a real account.</p>
         </div>
-        <span class="btn-primary" style="padding:11px 22px;font-size:.86rem;background:#1A0A0E;box-shadow:none"
-          onclick="showPage('org-apply')">Apply for Your Own Workspace →</span>
+        <a class="btn-primary" style="padding:11px 22px;font-size:.86rem;background:#1A0A0E;box-shadow:none"
+          href="org_signup.html">Apply for Your Own Workspace →</a>
       </div>
 
       <div class="demo-stat-row" id="demoStatRow"></div>
@@ -7083,7 +7049,7 @@
         <h4>Navigation</h4>
         <ul>
           <li><a onclick="showPage('home')">← Back to Home</a></li>
-          <li><a onclick="showPage('org-apply')">Apply for Your Organization</a></li>
+          <li><a href="org_signup.html">Apply for Your Organization</a></li>
           <li><a onclick="showPage('about')">About Us</a></li>
         </ul>
       </div>
