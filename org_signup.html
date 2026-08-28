@@ -1,0 +1,1118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HopeAlert — Register Your Organization</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Playfair+Display:ital,wght@0,700;1,600&display=swap"
+    rel="stylesheet">
+  <style>
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0
+    }
+
+    :root {
+      --brand: #E8294A;
+      --brand-light: #FF6B82;
+      --brand-soft: #FFF0F2;
+      --brand-mid: #FFDDE2;
+      --brand-hover: #C41E38;
+      --brand-rgb: 232, 41, 74;
+      --warm: #FFF7F0;
+      --cream: #FFFBF5;
+      --dark: #1A0A0E;
+      --gray: #6B5B5F;
+      --gray-light: #F5EFEF;
+      --white: #FFFFFF;
+      --font-head: 'Playfair Display', serif;
+      --font-body: 'Nunito', sans-serif;
+      --shadow-card: 0 4px 20px rgba(26, 10, 14, 0.07);
+      --shadow-lift: 0 12px 36px rgba(26, 10, 14, .10);
+      --green: #1D9E75;
+      --green-soft: #EAF8F2;
+      --amber: #BA7517;
+      --amber-soft: #FFF6E8;
+      --blue: #185FA5;
+      --radius: 18px;
+    }
+
+    html {
+      scroll-behavior: smooth
+    }
+
+    body {
+      font-family: var(--font-body);
+      background: var(--cream);
+      color: var(--dark);
+      line-height: 1.6;
+      min-height: 100vh
+    }
+
+    .wrap {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 0 5% 80px
+    }
+
+    /* ── Top bar ───────────────────────────────────────────────── */
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 20px 5%;
+      background: rgba(255, 255, 255, .9);
+      backdrop-filter: blur(10px);
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      border-bottom: 1px solid var(--brand-mid)
+    }
+
+    .topbar-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px
+    }
+
+    .topbar-logo-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: var(--brand);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 17px
+    }
+
+    .topbar-logo span {
+      font-size: 1.15rem;
+      font-weight: 800
+    }
+
+    .topbar-logo em {
+      font-style: normal;
+      color: var(--brand)
+    }
+
+    .topbar-save {
+      font-size: .82rem;
+      color: var(--gray);
+      font-weight: 700
+    }
+
+    /* ── Progress stepper ──────────────────────────────────────── */
+    .stepper {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      margin: 36px 0 8px;
+      position: relative
+    }
+
+    .stepper::before {
+      content: '';
+      position: absolute;
+      top: 15px;
+      left: 6%;
+      right: 6%;
+      height: 2px;
+      background: var(--gray-light);
+      z-index: 0
+    }
+
+    .stepper-fill {
+      position: absolute;
+      top: 15px;
+      left: 6%;
+      height: 2px;
+      background: var(--brand);
+      z-index: 1;
+      transition: width .35s ease;
+      width: 0%
+    }
+
+    .step {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      flex: 1
+    }
+
+    .step-dot {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: var(--white);
+      border: 2px solid var(--gray-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: .85rem;
+      color: var(--gray);
+      transition: all .25s
+    }
+
+    .step.done .step-dot {
+      background: var(--brand);
+      border-color: var(--brand);
+      color: white
+    }
+
+    .step.active .step-dot {
+      border-color: var(--brand);
+      color: var(--brand);
+      box-shadow: 0 0 0 5px var(--brand-soft)
+    }
+
+    .step-label {
+      font-size: .72rem;
+      font-weight: 700;
+      color: var(--gray);
+      text-align: center;
+      max-width: 90px
+    }
+
+    .step.active .step-label {
+      color: var(--dark)
+    }
+
+    /* ── Card ──────────────────────────────────────────────────── */
+    .form-card {
+      background: var(--white);
+      border-radius: 24px;
+      box-shadow: var(--shadow-lift);
+      padding: 36px 32px;
+      margin-top: 28px
+    }
+
+    .form-eyebrow {
+      font-size: .76rem;
+      font-weight: 800;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      color: var(--brand);
+      margin-bottom: 8px
+    }
+
+    .form-title {
+      font-family: var(--font-head);
+      font-size: clamp(1.5rem, 3vw, 1.9rem);
+      margin-bottom: 8px
+    }
+
+    .form-sub {
+      color: var(--gray);
+      font-size: .94rem;
+      margin-bottom: 28px;
+      max-width: 480px
+    }
+
+    .field-group {
+      margin-bottom: 20px
+    }
+
+    .field-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px
+    }
+
+    label {
+      display: block;
+      font-size: .82rem;
+      font-weight: 700;
+      margin-bottom: 7px;
+      color: var(--dark)
+    }
+
+    label .opt {
+      font-weight: 600;
+      color: var(--gray);
+      text-transform: none;
+      letter-spacing: 0
+    }
+
+    .hint {
+      font-size: .76rem;
+      color: var(--gray);
+      margin-top: 5px
+    }
+
+    input[type=text],
+    input[type=email],
+    input[type=tel],
+    input[type=password],
+    textarea,
+    select {
+      width: 100%;
+      padding: 12px 14px;
+      border-radius: 12px;
+      border: 1.5px solid var(--gray-light);
+      background: var(--warm);
+      font-family: var(--font-body);
+      font-size: .94rem;
+      color: var(--dark);
+      outline: none;
+      transition: border-color .2s, background .2s
+    }
+
+    input:focus,
+    textarea:focus,
+    select:focus {
+      border-color: var(--brand);
+      background: white
+    }
+
+    textarea {
+      resize: vertical;
+      min-height: 88px
+    }
+
+    .field-error {
+      border-color: #D64545 !important
+    }
+
+    .error-msg {
+      font-size: .76rem;
+      color: #D64545;
+      margin-top: 5px;
+      display: none
+    }
+
+    .field-error+.error-msg,
+    .field-error~.error-msg {
+      display: block
+    }
+
+    /* Org type cards */
+    .type-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 10px;
+      margin-bottom: 22px
+    }
+
+    .type-card {
+      border: 1.5px solid var(--gray-light);
+      border-radius: 14px;
+      padding: 16px 10px;
+      text-align: center;
+      cursor: pointer;
+      transition: all .15s;
+      background: var(--warm)
+    }
+
+    .type-card:hover {
+      border-color: var(--brand-mid)
+    }
+
+    .type-card.selected {
+      border-color: var(--brand);
+      background: var(--brand-soft)
+    }
+
+    .type-icon {
+      font-size: 1.5rem;
+      margin-bottom: 6px
+    }
+
+    .type-name {
+      font-size: .82rem;
+      font-weight: 700
+    }
+
+    /* Upload zones */
+    .upload-zone {
+      border: 1.5px dashed var(--gray-light);
+      border-radius: 14px;
+      padding: 20px;
+      text-align: center;
+      cursor: pointer;
+      transition: all .15s;
+      background: var(--warm)
+    }
+
+    .upload-zone:hover {
+      border-color: var(--brand-mid);
+      background: var(--brand-soft)
+    }
+
+    .upload-zone.has-file {
+      border-style: solid;
+      border-color: var(--green);
+      background: var(--green-soft)
+    }
+
+    .upload-icon {
+      font-size: 1.4rem;
+      margin-bottom: 6px
+    }
+
+    .upload-label {
+      font-size: .86rem;
+      font-weight: 700
+    }
+
+    .upload-hint {
+      font-size: .75rem;
+      color: var(--gray);
+      margin-top: 4px
+    }
+
+    .upload-filename {
+      font-size: .82rem;
+      font-weight: 700;
+      color: var(--green);
+      margin-top: 6px
+    }
+
+    input[type=file] {
+      display: none
+    }
+
+    .doc-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      padding: 16px;
+      border: 1.5px solid var(--gray-light);
+      border-radius: 14px;
+      margin-bottom: 14px
+    }
+
+    .doc-item-body {
+      flex: 1
+    }
+
+    .doc-item-title {
+      font-weight: 800;
+      font-size: .9rem;
+      margin-bottom: 2px
+    }
+
+    .doc-item-desc {
+      font-size: .78rem;
+      color: var(--gray);
+      margin-bottom: 10px
+    }
+
+    /* Trust/info panel */
+    .info-panel {
+      background: var(--brand-soft);
+      border: 1px solid var(--brand-mid);
+      border-radius: 14px;
+      padding: 16px 18px;
+      display: flex;
+      gap: 12px;
+      margin-bottom: 26px
+    }
+
+    .info-panel-icon {
+      font-size: 1.2rem;
+      flex-shrink: 0
+    }
+
+    .info-panel-text {
+      font-size: .85rem;
+      color: var(--dark);
+      line-height: 1.55
+    }
+
+    .info-panel-text strong {
+      color: var(--brand-hover)
+    }
+
+    /* Review step */
+    .review-section {
+      margin-bottom: 22px
+    }
+
+    .review-section h4 {
+      font-size: .82rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: .04em;
+      color: var(--gray);
+      margin-bottom: 10px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center
+    }
+
+    .review-edit {
+      font-size: .74rem;
+      color: var(--brand);
+      font-weight: 700;
+      cursor: pointer;
+      text-transform: none;
+      letter-spacing: 0
+    }
+
+    .review-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px 20px;
+      font-size: .88rem
+    }
+
+    .review-grid div span {
+      display: block;
+      color: var(--gray);
+      font-size: .74rem;
+      font-weight: 700;
+      margin-bottom: 2px
+    }
+
+    .consent-row {
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+      background: var(--warm);
+      border-radius: 12px;
+      padding: 14px 16px;
+      margin-bottom: 12px
+    }
+
+    .consent-row input {
+      width: 17px;
+      height: 17px;
+      margin-top: 2px;
+      accent-color: var(--brand);
+      flex-shrink: 0
+    }
+
+    .consent-row label {
+      font-size: .82rem;
+      font-weight: 600;
+      color: var(--dark);
+      margin: 0
+    }
+
+    .consent-row a {
+      color: var(--brand);
+      font-weight: 700
+    }
+
+    /* Nav buttons */
+    .form-nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 30px;
+      gap: 12px
+    }
+
+    .btn {
+      font-family: var(--font-body);
+      font-size: .92rem;
+      font-weight: 800;
+      padding: 13px 28px;
+      border-radius: 50px;
+      border: none;
+      cursor: pointer;
+      transition: all .2s
+    }
+
+    .btn-primary {
+      background: var(--brand);
+      color: white;
+      box-shadow: 0 6px 18px rgba(var(--brand-rgb), .28)
+    }
+
+    .btn-primary:hover {
+      background: var(--brand-hover);
+      transform: translateY(-1px)
+    }
+
+    .btn-primary:disabled {
+      opacity: .45;
+      cursor: not-allowed;
+      transform: none
+    }
+
+    .btn-ghost {
+      background: transparent;
+      color: var(--gray);
+      border: 1.5px solid var(--gray-light)
+    }
+
+    .btn-ghost:hover {
+      border-color: var(--brand-mid);
+      color: var(--brand)
+    }
+
+    /* Success / pending state */
+    .pending-wrap {
+      text-align: center;
+      padding: 20px 10px
+    }
+
+    .pending-icon {
+      width: 76px;
+      height: 76px;
+      border-radius: 50%;
+      background: var(--amber-soft);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.1rem;
+      margin: 0 auto 20px
+    }
+
+    .pending-title {
+      font-family: var(--font-head);
+      font-size: 1.7rem;
+      margin-bottom: 10px
+    }
+
+    .pending-sub {
+      color: var(--gray);
+      max-width: 440px;
+      margin: 0 auto 32px;
+      font-size: .94rem
+    }
+
+    .pending-id {
+      display: inline-block;
+      background: var(--warm);
+      border: 1px solid var(--gray-light);
+      border-radius: 50px;
+      padding: 7px 18px;
+      font-size: .82rem;
+      font-weight: 700;
+      margin-bottom: 36px
+    }
+
+    .timeline {
+      text-align: left;
+      max-width: 440px;
+      margin: 0 auto
+    }
+
+    .tl-row {
+      display: flex;
+      gap: 16px;
+      position: relative;
+      padding-bottom: 28px
+    }
+
+    .tl-row:last-child {
+      padding-bottom: 0
+    }
+
+    .tl-row::before {
+      content: '';
+      position: absolute;
+      left: 15px;
+      top: 32px;
+      bottom: 0;
+      width: 2px;
+      background: var(--gray-light)
+    }
+
+    .tl-row:last-child::before {
+      display: none
+    }
+
+    .tl-dot {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: .85rem;
+      font-weight: 800;
+      z-index: 1
+    }
+
+    .tl-row.tl-done .tl-dot {
+      background: var(--green);
+      color: white
+    }
+
+    .tl-row.tl-active .tl-dot {
+      background: var(--amber-soft);
+      color: var(--amber);
+      border: 2px solid var(--amber)
+    }
+
+    .tl-row.tl-pending .tl-dot {
+      background: var(--gray-light);
+      color: var(--gray)
+    }
+
+    .tl-body-title {
+      font-weight: 800;
+      font-size: .9rem;
+      margin-bottom: 3px
+    }
+
+    .tl-body-desc {
+      font-size: .8rem;
+      color: var(--gray)
+    }
+
+    @media (max-width:640px) {
+      .field-row {
+        grid-template-columns: 1fr
+      }
+
+      .type-grid {
+        grid-template-columns: 1fr
+      }
+
+      .form-card {
+        padding: 26px 20px
+      }
+
+      .review-grid {
+        grid-template-columns: 1fr
+      }
+
+      .step-label {
+        display: none
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="topbar">
+    <div class="topbar-logo">
+      <div class="topbar-logo-icon"><a href="index.html">🩸</a></div><a href="index.html" ><span><em>Hope</em>Alert</span></a>
+    </div>
+    <div class="topbar-save" id="topbarStatus">Step 1 of 4</div>
+  </div>
+
+  <div class="wrap">
+
+    <!-- STEPPER -->
+    <div class="stepper" id="stepper">
+      <div class="stepper-fill" id="stepperFill"></div>
+      <div class="step active" data-step="1">
+        <div class="step-dot">1</div>
+        <div class="step-label">Account</div>
+      </div>
+      <div class="step" data-step="2">
+        <div class="step-dot">2</div>
+        <div class="step-label">Organization</div>
+      </div>
+      <div class="step" data-step="3">
+        <div class="step-dot">3</div>
+        <div class="step-label">Verification</div>
+      </div>
+      <div class="step" data-step="4">
+        <div class="step-dot">4</div>
+        <div class="step-label">Review</div>
+      </div>
+    </div>
+
+    <!-- ══════════════ STEP 1 — ACCOUNT BASICS ══════════════ -->
+    <div class="form-card step-panel" id="panel-1">
+      <div class="form-eyebrow">Get started</div>
+      <div class="form-title">Create your organization's account</div>
+      <div class="form-sub">This takes about 5 minutes. You'll be able to explore the full dashboard right away — public
+        donor pages go live once we verify your organization.</div>
+
+      <label>What type of organization are you? <span class="opt">(required)</span></label>
+      <div class="type-grid" id="orgTypeGrid">
+        <div class="type-card" data-type="blood_bank">
+          <div class="type-icon">🏥</div>
+          <div class="type-name">Blood Bank</div>
+        </div>
+        <div class="type-card" data-type="hospital">
+          <div class="type-icon">⚕️</div>
+          <div class="type-name">Hospital</div>
+        </div>
+        <div class="type-card" data-type="ngo">
+          <div class="type-icon">🤝</div>
+          <div class="type-name">NGO / Volunteer Org</div>
+        </div>
+      </div>
+
+      <div class="field-group">
+        <label for="orgName">Organization name</label>
+        <input type="text" id="orgName" placeholder="e.g. Sunamganj Blood Bank">
+        <div class="error-msg">Enter your organization's name.</div>
+      </div>
+
+      <div class="field-row">
+        <div class="field-group">
+          <label for="ownerName">Your full name <span class="opt">(account owner)</span></label>
+          <input type="text" id="ownerName" placeholder="Your name">
+          <div class="error-msg">Enter your full name.</div>
+        </div>
+        <div class="field-group">
+          <label for="ownerPhone">Your phone number</label>
+          <input type="tel" id="ownerPhone" placeholder="+880 1XXX-XXXXXX">
+          <div class="error-msg">Enter a valid phone number.</div>
+        </div>
+      </div>
+
+      <div class="field-row">
+        <div class="field-group">
+          <label for="ownerEmail">Your email</label>
+          <input type="email" id="ownerEmail" placeholder="you@organization.org">
+          <div class="error-msg">Enter a valid email address.</div>
+        </div>
+        <div class="field-group">
+          <label for="ownerPassword">Create a password</label>
+          <input type="password" id="ownerPassword" placeholder="At least 8 characters">
+          <div class="hint">You'll use this to log in — role: Owner.</div>
+          <div class="error-msg">Password must be at least 8 characters.</div>
+        </div>
+      </div>
+
+      <div class="form-nav">
+        <span></span>
+        <button class="btn btn-primary" onclick="goStep(2)">Continue →</button>
+      </div>
+    </div>
+
+    <!-- ══════════════ STEP 2 — ORGANIZATION IDENTITY ══════════════ -->
+    <div class="form-card step-panel" id="panel-2" style="display:none">
+      <div class="form-eyebrow">Organization profile</div>
+      <div class="form-title">Tell donors who you are</div>
+      <div class="form-sub">This appears on your organization's public profile and donor-facing pages once verified.
+      </div>
+
+      <div class="field-group">
+        <label for="orgAddress">Address / location</label>
+        <input type="text" id="orgAddress" placeholder="e.g. Sunamganj Sadar, Sylhet Division, Bangladesh">
+        <div class="error-msg">Enter your organization's address.</div>
+      </div>
+
+      <div class="field-row">
+        <div class="field-group">
+          <label for="orgPhone">Official contact phone</label>
+          <input type="tel" id="orgPhone" placeholder="Institutional number, not personal">
+          <div class="error-msg">Enter an official contact number.</div>
+        </div>
+        <div class="field-group">
+          <label for="orgEmail">Official contact email</label>
+          <input type="email" id="orgEmail" placeholder="info@yourorganization.org">
+          <div class="error-msg">Enter an official contact email.</div>
+        </div>
+      </div>
+
+      <div class="field-group">
+        <label for="orgDesc">Short description <span class="opt">(shown on your public page)</span></label>
+        <textarea id="orgDesc"
+          placeholder="A sentence or two about your organization and the community you serve."></textarea>
+      </div>
+
+      <div class="field-group">
+        <label>Logo <span class="opt">(optional — you can add this later)</span></label>
+        <div class="upload-zone" id="logoZone" onclick="document.getElementById('logoFile').click()">
+          <input type="file" id="logoFile" accept="image/*" onchange="handleUpload(this,'logoZone')">
+          <div class="upload-icon">🖼️</div>
+          <div class="upload-label">Click to upload your logo</div>
+          <div class="upload-hint">PNG or JPG, square image works best</div>
+          <div class="upload-filename" id="logoZoneFile"></div>
+        </div>
+      </div>
+
+      <div class="form-nav">
+        <button class="btn btn-ghost" onclick="goStep(1)">← Back</button>
+        <button class="btn btn-primary" onclick="goStep(3)">Continue →</button>
+      </div>
+    </div>
+
+    <!-- ══════════════ STEP 3 — VERIFICATION ══════════════ -->
+    <div class="form-card step-panel" id="panel-3" style="display:none">
+      <div class="form-eyebrow">Verification</div>
+      <div class="form-title">Confirm your organization is real</div>
+      <div class="form-sub">This is what protects your donors. We check every organization by hand before its public
+        pages go live — usually within 2–3 days.</div>
+
+      <div class="info-panel">
+        <div class="info-panel-icon">🔒</div>
+        <div class="info-panel-text"><strong>Why we ask:</strong> HopeAlert handles real donors' phone numbers and blood
+          types. Verifying every organization is how we keep that data safe and keep the platform trustworthy for
+          everyone using it.</div>
+      </div>
+
+      <div class="field-group">
+        <label for="regNumber">Registration / license number</label>
+        <input type="text" id="regNumber" placeholder="NGO Affairs Bureau, DGHS licence, or hospital registration no.">
+        <div class="hint">Whatever official number your organization was registered or licensed under.</div>
+        <div class="error-msg">Enter your registration or licence number.</div>
+      </div>
+
+      <div class="doc-item">
+        <div class="doc-item-body">
+          <div class="doc-item-title">Registration or license document</div>
+          <div class="doc-item-desc">A photo or scan of your official registration certificate or health-facility
+            licence.</div>
+          <div class="upload-zone" id="regZone" onclick="document.getElementById('regFile').click()">
+            <input type="file" id="regFile" accept="image/*,.pdf" onchange="handleUpload(this,'regZone')">
+            <div class="upload-icon">📄</div>
+            <div class="upload-label">Click to upload document</div>
+            <div class="upload-hint">PDF, PNG or JPG, up to 10MB</div>
+            <div class="upload-filename" id="regZoneFile"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="doc-item">
+        <div class="doc-item-body">
+          <div class="doc-item-title">Your government-issued ID</div>
+          <div class="doc-item-desc">Confirms the account owner is a real, accountable person — National ID, passport,
+            or driving licence.</div>
+          <div class="upload-zone" id="idZone" onclick="document.getElementById('idFile').click()">
+            <input type="file" id="idFile" accept="image/*,.pdf" onchange="handleUpload(this,'idZone')">
+            <div class="upload-icon">🪪</div>
+            <div class="upload-label">Click to upload ID</div>
+            <div class="upload-hint">PDF, PNG or JPG, up to 10MB</div>
+            <div class="upload-filename" id="idZoneFile"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="field-group">
+        <label for="verifyNotes">Anything that helps us verify you faster? <span class="opt">(optional)</span></label>
+        <textarea id="verifyNotes"
+          placeholder="e.g. links to your organization's Facebook page, news coverage, or a partner organization who can vouch for you."></textarea>
+      </div>
+
+      <div class="form-nav">
+        <button class="btn btn-ghost" onclick="goStep(2)">← Back</button>
+        <button class="btn btn-primary" onclick="goStep(4)">Continue →</button>
+      </div>
+    </div>
+
+    <!-- ══════════════ STEP 4 — REVIEW & SUBMIT ══════════════ -->
+    <div class="form-card step-panel" id="panel-4" style="display:none">
+      <div class="form-eyebrow">Almost done</div>
+      <div class="form-title">Review your application</div>
+      <div class="form-sub">Check everything looks right, then submit. You can edit any section before sending.</div>
+
+      <div class="review-section">
+        <h4>Account <span class="review-edit" onclick="goStep(1)">Edit</span></h4>
+        <div class="review-grid">
+          <div><span>Organization type</span><span id="rvType">—</span></div>
+          <div><span>Organization name</span><span id="rvOrgName">—</span></div>
+          <div><span>Owner name</span><span id="rvOwnerName">—</span></div>
+          <div><span>Owner phone</span><span id="rvOwnerPhone">—</span></div>
+          <div><span>Owner email</span><span id="rvOwnerEmail">—</span></div>
+        </div>
+      </div>
+
+      <div class="review-section">
+        <h4>Organization profile <span class="review-edit" onclick="goStep(2)">Edit</span></h4>
+        <div class="review-grid">
+          <div><span>Address</span><span id="rvAddress">—</span></div>
+          <div><span>Contact phone</span><span id="rvOrgPhone">—</span></div>
+          <div><span>Contact email</span><span id="rvOrgEmail">—</span></div>
+          <div><span>Logo</span><span id="rvLogo">Not added</span></div>
+        </div>
+      </div>
+
+      <div class="review-section">
+        <h4>Verification <span class="review-edit" onclick="goStep(3)">Edit</span></h4>
+        <div class="review-grid">
+          <div><span>Registration number</span><span id="rvRegNumber">—</span></div>
+          <div><span>Registration document</span><span id="rvRegDoc">Not uploaded</span></div>
+          <div><span>Government ID</span><span id="rvIdDoc">Not uploaded</span></div>
+        </div>
+      </div>
+
+      <div class="consent-row">
+        <input type="checkbox" id="consentAccurate">
+        <label for="consentAccurate">I confirm the information and documents provided are accurate and belong to this
+          organization.</label>
+      </div>
+      <div class="consent-row">
+        <input type="checkbox" id="consentTerms">
+        <label for="consentTerms">I agree to HopeAlert's <a href="#">Terms of Service</a> and <a href="#">Privacy
+            Policy</a>, and understand donor data must only be used for donation coordination.</label>
+      </div>
+
+      <div class="form-nav">
+        <button class="btn btn-ghost" onclick="goStep(3)">← Back</button>
+        <button class="btn btn-primary" id="submitBtn" onclick="submitApplication()" disabled>Submit for
+          verification</button>
+      </div>
+    </div>
+
+    <!-- ══════════════ PENDING / SUCCESS STATE ══════════════ -->
+    <div class="form-card pending-wrap" id="panel-pending" style="display:none">
+      <div class="pending-icon">⏳</div>
+      <div class="pending-title">Application submitted</div>
+      <div class="pending-sub">Thanks — your dashboard is ready to explore right now. Your organization's public donor
+        pages will go live as soon as verification is complete, usually within 2–3 days.</div>
+      <div class="pending-id" id="appId">Application #HA-000000</div>
+
+      <div class="timeline">
+        <div class="tl-row tl-done">
+          <div class="tl-dot">✓</div>
+          <div>
+            <div class="tl-body-title">Application submitted</div>
+            <div class="tl-body-desc">We've received your details and documents.</div>
+          </div>
+        </div>
+        <div class="tl-row tl-active">
+          <div class="tl-dot">2</div>
+          <div>
+            <div class="tl-body-title">Under review</div>
+            <div class="tl-body-desc">We check your registration and ID by hand — you may get a call to confirm.</div>
+          </div>
+        </div>
+        <div class="tl-row tl-pending">
+          <div class="tl-dot">3</div>
+          <div>
+            <div class="tl-body-title">Verified &amp; live</div>
+            <div class="tl-body-desc">Your public donor page and notifications switch on automatically.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-nav" style="justify-content:center;margin-top:36px">
+        <button class="btn btn-primary" onclick="alert('This would open your dashboard.')">Go to my dashboard →</button>
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    let currentStep = 1;
+    let selectedType = null;
+    const uploaded = { logo: false, reg: false, id: false };
+
+    function goStep(n) {
+      if (n > currentStep && !validateStep(currentStep)) return;
+      document.querySelectorAll('.step-panel').forEach(p => p.style.display = 'none');
+      document.getElementById('panel-' + n).style.display = 'block';
+      currentStep = n;
+      document.getElementById('topbarStatus').textContent = 'Step ' + n + ' of 4';
+      document.querySelectorAll('.step').forEach(s => {
+        const step = parseInt(s.dataset.step);
+        s.classList.toggle('done', step < n);
+        s.classList.toggle('active', step === n);
+      });
+      document.getElementById('stepperFill').style.width = ((n - 1) / 3 * 88) + '%';
+      if (n === 4) fillReview();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // Org type selector
+    document.querySelectorAll('.type-card').forEach(card => {
+      card.addEventListener('click', () => {
+        document.querySelectorAll('.type-card').forEach(c => c.classList.remove('selected'));
+        card.classList.add('selected');
+        selectedType = card.dataset.type;
+      });
+    });
+
+    function showFieldError(id, show) {
+      const el = document.getElementById(id);
+      if (!el) return;
+      el.classList.toggle('field-error', show);
+    }
+
+    function validEmail(v) { return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v) }
+
+    function validateStep(n) {
+      let ok = true;
+      if (n === 1) {
+        if (!selectedType) { ok = false; showToastMsg('Please select an organization type.') }
+        const orgName = document.getElementById('orgName').value.trim();
+        showFieldError('orgName', !orgName); if (!orgName) ok = false;
+        const ownerName = document.getElementById('ownerName').value.trim();
+        showFieldError('ownerName', !ownerName); if (!ownerName) ok = false;
+        const phone = document.getElementById('ownerPhone').value.trim();
+        showFieldError('ownerPhone', phone.length < 7); if (phone.length < 7) ok = false;
+        const email = document.getElementById('ownerEmail').value.trim();
+        showFieldError('ownerEmail', !validEmail(email)); if (!validEmail(email)) ok = false;
+        const pw = document.getElementById('ownerPassword').value;
+        showFieldError('ownerPassword', pw.length < 8); if (pw.length < 8) ok = false;
+      }
+      if (n === 2) {
+        const addr = document.getElementById('orgAddress').value.trim();
+        showFieldError('orgAddress', !addr); if (!addr) ok = false;
+        const oPhone = document.getElementById('orgPhone').value.trim();
+        showFieldError('orgPhone', oPhone.length < 7); if (oPhone.length < 7) ok = false;
+        const oEmail = document.getElementById('orgEmail').value.trim();
+        showFieldError('orgEmail', !validEmail(oEmail)); if (!validEmail(oEmail)) ok = false;
+      }
+      if (n === 3) {
+        const reg = document.getElementById('regNumber').value.trim();
+        showFieldError('regNumber', !reg); if (!reg) ok = false;
+        if (!uploaded.reg) { ok = false; showToastMsg('Please upload your registration document.') }
+        if (!uploaded.id) { ok = false; showToastMsg('Please upload a government-issued ID.') }
+      }
+      return ok;
+    }
+
+    function handleUpload(input, zoneId) {
+      const zone = document.getElementById(zoneId);
+      const label = document.getElementById(zoneId + 'File');
+      if (input.files && input.files[0]) {
+        zone.classList.add('has-file');
+        label.textContent = '✓ ' + input.files[0].name;
+        if (zoneId === 'logoZone') uploaded.logo = true;
+        if (zoneId === 'regZone') uploaded.reg = true;
+        if (zoneId === 'idZone') uploaded.id = true;
+      }
+    }
+
+    function fillReview() {
+      const typeLabels = { blood_bank: 'Blood Bank', hospital: 'Hospital', ngo: 'NGO / Volunteer Org' };
+      document.getElementById('rvType').textContent = typeLabels[selectedType] || '—';
+      document.getElementById('rvOrgName').textContent = val('orgName');
+      document.getElementById('rvOwnerName').textContent = val('ownerName');
+      document.getElementById('rvOwnerPhone').textContent = val('ownerPhone');
+      document.getElementById('rvOwnerEmail').textContent = val('ownerEmail');
+      document.getElementById('rvAddress').textContent = val('orgAddress');
+      document.getElementById('rvOrgPhone').textContent = val('orgPhone');
+      document.getElementById('rvOrgEmail').textContent = val('orgEmail');
+      document.getElementById('rvLogo').textContent = uploaded.logo ? 'Uploaded' : 'Not added';
+      document.getElementById('rvRegNumber').textContent = val('regNumber');
+      document.getElementById('rvRegDoc').textContent = uploaded.reg ? 'Uploaded' : 'Not uploaded';
+      document.getElementById('rvIdDoc').textContent = uploaded.id ? 'Uploaded' : 'Not uploaded';
+      checkConsent();
+    }
+    function val(id) { const v = document.getElementById(id).value.trim(); return v || '—' }
+
+    document.getElementById('consentAccurate').addEventListener('change', checkConsent);
+    document.getElementById('consentTerms').addEventListener('change', checkConsent);
+    function checkConsent() {
+      const ok = document.getElementById('consentAccurate').checked && document.getElementById('consentTerms').checked;
+      document.getElementById('submitBtn').disabled = !ok;
+    }
+
+    function submitApplication() {
+      document.querySelectorAll('.step-panel').forEach(p => p.style.display = 'none');
+      document.getElementById('stepper').style.display = 'none';
+      document.getElementById('panel-pending').style.display = 'block';
+      document.getElementById('topbarStatus').textContent = 'Application submitted';
+      document.getElementById('appId').textContent = 'Application #HA-' + Math.floor(100000 + Math.random() * 900000);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // Lightweight toast (no separate element in this page — reuse title bar flash)
+    function showToastMsg(msg) {
+      const bar = document.getElementById('topbarStatus');
+      const old = bar.textContent;
+      bar.textContent = msg;
+      bar.style.color = '#D64545';
+      setTimeout(() => { bar.textContent = old; bar.style.color = '' }, 2200);
+    }
+  </script>
+</body>
+
+</html>
