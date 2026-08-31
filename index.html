@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nusrath Jahan Sukhy — Developer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500&family=Work+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#10242A;
+    --paper:#F5F0E6;
+    --paper-dim:#EDE6D6;
+    --brass:#C99A3E;
+    --river:#2E6E68;
+    --rust:#A23B32;
+    --text:#2A2620;
+    --text-dim:#5C574C;
+    --line: rgba(16,36,42,0.14);
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--text);
+    font-family:'Work Sans',sans-serif;
+    line-height:1.6;
+  }
+  ::selection{background:var(--brass); color:var(--ink);}
+
+  a{color:inherit;}
+
+  .wrap{
+    max-width:760px;
+    margin:0 auto;
+    padding:0 28px;
+  }
+
+  header.hero{
+    padding:104px 0 68px;
+    border-bottom:1px solid var(--line);
+  }
+  .kicker{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:0.82rem;
+    color:var(--river);
+    letter-spacing:0.02em;
+    margin-bottom:22px;
+  }
+  h1{
+    font-family:'Fraunces',serif;
+    font-weight:500;
+    font-size:clamp(2.3rem,6vw,3.4rem);
+    line-height:1.08;
+    margin:0 0 20px;
+    color:var(--ink);
+    letter-spacing:-0.01em;
+  }
+  .lede{
+    font-size:1.14rem;
+    color:var(--text-dim);
+    max-width:56ch;
+    margin:0 0 32px;
+  }
+  .lede strong{color:var(--text); font-weight:600;}
+
+  .hero-links{
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px 22px;
+    font-family:'IBM Plex Mono',monospace;
+    font-size:0.86rem;
+  }
+  .hero-links a{
+    text-decoration:none;
+    border-bottom:1px solid var(--brass);
+    padding-bottom:2px;
+    transition:opacity .15s;
+  }
+  .hero-links a:hover{opacity:0.65;}
+
+  section{
+    padding:60px 0;
+    border-bottom:1px solid var(--line);
+  }
+  section:last-of-type{border-bottom:none;}
+
+  .section-head{
+    display:flex;
+    align-items:baseline;
+    justify-content:space-between;
+    margin-bottom:36px;
+    gap:16px;
+  }
+  .section-head h2{
+    font-family:'Fraunces',serif;
+    font-weight:500;
+    font-size:1.5rem;
+    margin:0;
+    color:var(--ink);
+  }
+  .section-note{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:0.78rem;
+    color:var(--text-dim);
+    white-space:nowrap;
+  }
+
+  /* Work log entries */
+  .entry{
+    padding:30px 0;
+    border-top:1px solid var(--line);
+    display:grid;
+    grid-template-columns:96px 1fr;
+    gap:22px;
+  }
+  .entry:first-of-type{border-top:none; padding-top:0;}
+  .entry-date{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:0.78rem;
+    color:var(--river);
+    padding-top:4px;
+  }
+  .entry-title{
+    font-family:'Fraunces',serif;
+    font-size:1.34rem;
+    font-weight:500;
+    margin:0 0 8px;
+    color:var(--ink);
+  }
+  .entry-title a{
+    text-decoration:none;
+    border-bottom:1px solid transparent;
+  }
+  .entry-title a:hover{border-bottom-color:var(--ink);}
+  .entry-status{
+    display:inline-block;
+    font-family:'IBM Plex Mono',monospace;
+    font-size:0.68rem;
+    letter-spacing:0.04em;
+    text-transform:uppercase;
+    padding:3px 8px;
+    border-radius:2px;
+    margin-left:10px;
+    vertical-align:middle;
+    position:relative;
+    top:-2px;
+    border:1px solid transparent;
+  }
+  .status-live{background:rgba(46,110,104,0.12); color:var(--river); border-color:rgba(46,110,104,0.3);}
+  .status-progress{background:rgba(201,154,62,0.14); color:#8a6a24; border-color:rgba(201,154,62,0.35);}
+
+  .entry-desc{
+    color:var(--text-dim);
+    margin:0 0 14px;
+    max-width:58ch;
+  }
+  .entry-stack{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:0.78rem;
+    color:var(--text-dim);
+    margin-bottom:14px;
+  }
+  .entry-stack span{
+    color:var(--ink);
+  }
+  .entry-link{
+    display:inline-block;
+    font-family:'IBM Plex Mono',monospace;
+    font-size:0.8rem;
+    text-decoration:none;
+    color:var(--river);
+    border-bottom:1px solid transparent;
+  }
+  .entry-link:hover{border-bottom-color:var(--river);}
+
+  /* smaller work list */
+  .minor-list{list-style:none; margin:0; padding:0;}
+  .minor-list li{
+    display:grid;
+    grid-template-columns:96px 1fr;
+    gap:22px;
+    padding:16px 0;
+    border-top:1px solid var(--line);
+    color:var(--text-dim);
+    font-size:0.96rem;
+  }
+  .minor-list li:first-child{border-top:none;}
+  .minor-list .m-tag{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:0.76rem;
+    color:var(--river);
+  }
+  .minor-list strong{color:var(--text); font-weight:600;}
+
+  /* stack */
+  .stack-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:28px 40px;
+  }
+  .stack-col h3{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:0.78rem;
+    text-transform:none;
+    color:var(--river);
+    margin:0 0 14px;
+    font-weight:500;
+  }
+  .stack-col ul{
+    list-style:none;
+    margin:0;
+    padding:0;
+  }
+  .stack-col li{
+    padding:7px 0;
+    border-top:1px solid var(--line);
+    font-size:0.96rem;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+  }
+  .stack-col li:first-child{border-top:none;}
+  .learning-tag{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:0.7rem;
+    color:var(--brass);
+    letter-spacing:0.02em;
+  }
+
+  /* note */
+  .note{
+    max-width:58ch;
+    font-size:1.03rem;
+    color:var(--text-dim);
+  }
+  .note strong{color:var(--text); font-weight:600;}
+
+  footer{
+    padding:52px 0 84px;
+  }
+  footer .lede{margin-bottom:24px;}
+  footer .hero-links{margin-bottom:0;}
+  .foot-note{
+    margin-top:44px;
+    font-family:'IBM Plex Mono',monospace;
+    font-size:0.76rem;
+    color:var(--text-dim);
+  }
+
+  @media(max-width:560px){
+    .entry, .minor-list li{
+      grid-template-columns:1fr;
+      gap:6px;
+    }
+    .stack-grid{grid-template-columns:1fr;}
+    header.hero{padding:64px 0 44px;}
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+  }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+  <header class="hero">
+    <div class="kicker">Sunamganj, Bangladesh</div>
+    <h1>Nusrath Jahan Sukhy</h1>
+    <p class="lede">Self-taught full-stack developer. I design and build <strong>Node.js / MySQL</strong> backends and <strong>React</strong> frontends — practical systems for people and causes that would otherwise go without one.</p>
+    <div class="hero-links">
+      <a href="mailto:nusrathjahansukhy122@gmail.com">nusrathjahansukhy122@gmail.com</a>
+      <a href="https://cyberxailab.com" target="_blank" rel="noopener">cyberxailab.com</a>
+      <a href="https://jahansukhy.github.io" target="_blank" rel="noopener">jahansukhy.github.io</a>
+    </div>
+  </header>
+
+  <section id="work">
+    <div class="section-head">
+      <h2>Work</h2>
+      <span class="section-note">2 entries</span>
+    </div>
+
+    <div class="entry">
+      <div class="entry-date">2026</div>
+      <div>
+        <h3 class="entry-title">
+          CyberAI Research Lab
+          <span class="entry-status status-live">Live</span>
+        </h3>
+        <p class="entry-desc">Built end to end, solo — a full site for a cybersecurity and AI research institute, covering research publications, team profiles, partner collaborations, and a login-protected dashboard. Includes the database schema and authentication system.</p>
+        <div class="entry-stack">Node.js · MySQL · React · <span>HTML/CSS/JS</span></div>
+        <a class="entry-link" href="https://cyberxailab.com" target="_blank" rel="noopener">View project →</a>
+      </div>
+    </div>
+
+    <div class="entry">
+      <div class="entry-date">2026</div>
+      <div>
+        <h3 class="entry-title">
+          HopeAlert
+          <span class="entry-status status-progress">In progress</span>
+        </h3>
+        <p class="entry-desc">A multi-tenant blood bank coordination platform for hospitals, blood banks, and NGOs — donor registration, emergency request matching, and organization-level data isolation. Free for any organization, anywhere in the world, with no cost or conditions.</p>
+        <div class="entry-stack"><span>JavaScript</span> · Supabase (in progress) · HTML/CSS</div>
+        <a class="entry-link" href="https://jahansukhy.github.io/hopeAlert" target="_blank" rel="noopener">View project →</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="also">
+    <div class="section-head">
+      <h2>Also</h2>
+      <span class="section-note">smaller work</span>
+    </div>
+    <ul class="minor-list">
+      <li>
+        <span class="m-tag">site</span>
+        <span>Redesigned the site for <strong>Bishwajon (বিশ্বজন)</strong>, a volunteer organization — a self-contained page with its own admin backend.</span>
+      </li>
+      <li>
+        <span class="m-tag">daily</span>
+        <span>Teaches English daily, alongside development work.</span>
+      </li>
+    </ul>
+  </section>
+
+  <section id="stack">
+    <div class="section-head">
+      <h2>Stack</h2>
+    </div>
+    <div class="stack-grid">
+      <div class="stack-col">
+        <h3>Backend</h3>
+        <ul>
+          <li>Node.js</li>
+          <li>MySQL</li>
+          <li>Supabase <span class="learning-tag">learning</span></li>
+          <li>Laravel / PHP <span class="learning-tag">learning</span></li>
+        </ul>
+      </div>
+      <div class="stack-col">
+        <h3>Frontend</h3>
+        <ul>
+          <li>React</li>
+          <li>JavaScript</li>
+          <li>HTML / CSS</li>
+          <li>Next.js <span class="learning-tag">learning</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="why">
+    <div class="section-head">
+      <h2>Why I build</h2>
+    </div>
+    <p class="note">I started building systems after seeing how difficult it is to get help in real emergencies, when information and coordination are missing. Most of what I build is free, or made for people and organizations that couldn't otherwise afford a developer. That's a deliberate choice.</p>
+  </section>
+
+  <footer>
+    <div class="section-head">
+      <h2>Get in touch</h2>
+    </div>
+    <p class="lede">Open to freelance work, collaboration, or just a conversation about what you're building.</p>
+    <div class="hero-links">
+      <a href="mailto:nusrathjahansukhy122@gmail.com">nusrathjahansukhy122@gmail.com</a>
+      <a href="https://jahansukhy.github.io" target="_blank" rel="noopener">jahansukhy.github.io</a>
+    </div>
+    <div class="foot-note">Sunamganj, Bangladesh — updated 2026</div>
+  </footer>
+
+</div>
+
+</body>
+</html>
